@@ -39,7 +39,7 @@ internal class Program
                     }
                 }
                 Console.WriteLine("ggjmvjg");
-                await response.WriteAsync("<p>Файлы успешно загружены fvfvfbgbghfv</p>");
+                await response.WriteAsync("<p>Файлы успешно загружены</p>");
             }
             else
             {
