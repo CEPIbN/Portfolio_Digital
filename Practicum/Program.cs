@@ -74,6 +74,7 @@ public class InputMiddleware
                 Program.users.Add(new Person { Name = b["login"], Password = b["password"] });
             await response.WriteAsync($"{request.Query["login"]} - {request.Query["password"]}");
             response.ContentType = "text/html; charset=utf-8";
+            Console.WriteLine("страница пользователя");
             await next.Invoke(context);
         }
         else
