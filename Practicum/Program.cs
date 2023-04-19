@@ -38,7 +38,7 @@ internal class Program
                         await file.CopyToAsync(fileStream);
                     }
                 }
-                Console.WriteLine("ggjmvjg");
+                Console.WriteLine("Загрузка файлов завершена");
                 await response.WriteAsync("<p>Файлы успешно загружены</p>");
             }
             else
