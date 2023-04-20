@@ -20,7 +20,7 @@ internal class Program
             var path = request.Path;
             if (path == "/user" && request.Method == "POST")
             {
-                response.ContentType = "text/html; charset=utf-8";
+                response.ContentType = "text/plain; charset=utf-8";
                 IFormFileCollection files = request.Form.Files;
                 // путь к папке, где будут храниться файлы
                 var uploadPath = $"{Directory.GetCurrentDirectory()}/uploads";
@@ -69,10 +69,11 @@ public class InputMiddleware
 
         if (path == "/user")
         {
-            var b = request.Query;
-            if (!Program.users.Contains(new Person { Name = b["login"], Password = b["password"] }))
-                Program.users.Add(new Person { Name = b["login"], Password = b["password"] });
-            await response.WriteAsync($"{request.Query["login"]} - {request.Query["password"]}");
+            var form = request.Form;
+            //var b = request.Query;
+            if (!Program.users.Contains(new Person { Name = form["login"], Password = form["password"] }))
+                Program.users.Add(new Person { Name = form["login"], Password = form["password"] });
+            await response.WriteAsync($"{form["login"]} - {form["password"]}");
             response.ContentType = "text/html; charset=utf-8";
             Console.WriteLine("страница пользователя");
             await next.Invoke(context);
