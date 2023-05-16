@@ -1,0 +1,13 @@
+﻿@model Person
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+<h2>Выберите файл для загрузки</h2>
+<p>@Model.Login</p>
+<a asp-route="/users/@Model.Login/Information">Профиль</a>
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="uploads" /><br>
+    <input type="submit" value="Загрузить" />
+</form>
+<a asp-action="Privacy">Каталог</a>

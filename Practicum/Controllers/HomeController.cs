@@ -7,24 +7,33 @@ namespace MVP.Controllers
 {
     public class HomeController : Controller
     {
+        private IPersonRepository repository;
+        public HomeController(IPersonRepository repo)
+        {
+            repository = repo;
+        }
         public IActionResult Index()
         {
-            return View();
+            return View(repository.People);
         }
         [Route("logIn")]
         public IActionResult LogIn()
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult LogIn(string login, int password)
+        [Route("Load")]
+        [HttpGet]
+        public IActionResult Load(int id)
         {
-            Person _person = IndexViewModel.People.FirstOrDefault(c => login == c.Login && password == c.Password);
-            if (_person != null)
+            try
+            {
+                var _person = repository.GetPersonById(id);
+                return RedirectToAction("Index");
+            }
+            catch(Exception)
             {
                 return NotFound();
             }
-            return Content($"{_person.Login}-{_person.Email}");
         }
 
         [Route("logUp")]
@@ -32,20 +41,12 @@ namespace MVP.Controllers
         {
             return View();
         }
+        [Route("LogUp")]
         [HttpPost]
         public IActionResult LogUp(Person person)
         {
-            Person _person = IndexViewModel.People.FirstOrDefault(c => person.Email == c.Email);
-            if (_person == null)
-            {  
-                return View(person);
-            }
-            IndexViewModel.People.Add(person);
-            return Content($"{person.Login}-{person.Email}");
-        }
-        public IActionResult GetUser(string login, string password)
-        {
-            return Content($"{login}-{password}");
+            repository.AddPerson(person);
+            return RedirectToAction("Index");
         }
     }
 }
