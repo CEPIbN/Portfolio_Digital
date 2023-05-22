@@ -3,11 +3,102 @@
 @{
     Layout = "_Layout";
 }
-<h2>Выберите файл для загрузки</h2>
-<p>@Model.Login</p>
-<a asp-route="/users/@Model.Login/Information">Профиль</a>
-<form method="post" enctype="multipart/form-data">
-    <input type="file" name="uploads" /><br>
-    <input type="submit" value="Загрузить" />
-</form>
-<a asp-action="Privacy">Каталог</a>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <title>Profile</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="/">Название</a>
+        </div>
+        <div class="navigation">
+            <a class="navigation_item" href="/">рубрика</a>
+            <a class="navigation_item" href="/">рубрика</a>
+            <a class="navigation_item" href="/">рубрика</a>
+            <a class="navigation_item" href="/">рубрика</a>
+            <a class="navigation_item" href="/">рубрика</a>
+            <a class="navigation_item" href="/">рубрика</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="division">
+        </div>
+        <div class="main_info">
+            <div class="profile_info">
+                <img class="user_img" src="/images/user_img.png">
+                <p class="user_name">Никнейм Никнеймович</p>
+                <button class="edit_button">Редактировать</button>
+            </div>
+            <div class="project_info">
+                <form>
+                    <input class="search" placeholder="Поиск">
+                    <div class="filters_box">
+                        <select class="filters">
+                            <option disabled selected>Фильтр</option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                        <select class="filters">
+                            <option disabled selected>Фильтр</option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                        <select class="filters">
+                            <option disabled selected>Фильтр</option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                        <select class="filters">
+                            <option disabled selected>Фильтр</option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                        <select class="filters">
+                            <option disabled selected>Фильтр</option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                        <select class="filters">
+                            <option disabled selected>Фильтр</option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                        <select class="filters">
+                            <option disabled selected>Фильтр</option>
+                            <option></option>
+                            <option></option>
+                        </select>
+                    </div>
+                </form>
+                <div class="project_gallery">
+                    <div class="project_cards existed">
+                        <img src="/images/existed.png"> 
+                        <div style="display: none;" class="add_project_container">
+                            <button class="add_project" >Add project</button>
+                        </div>
+                        <p class="project_name">Название</p>
+                    </div>
+                    <div class="project_cards not-existed">
+                        <img src="/images/existed.png"> 
+                        <div class="add_project_container">
+                            <button class="add_project">Add project</button>
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
