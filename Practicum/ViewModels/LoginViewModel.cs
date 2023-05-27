@@ -1,13 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MVP.Models
+namespace MVP.ViewModels
 {
-    public class Person
+    public class LoginViewModel
     {
         [Required]
-        public string? Login { get; set; }
-        [Required]
-        public int Password { get; set; }
+        public string? Password { get; set; }
         [Required]
         [EmailAddress]
         public string? Email { get; set; }
