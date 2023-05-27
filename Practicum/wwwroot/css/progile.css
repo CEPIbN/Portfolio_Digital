@@ -2,7 +2,7 @@ body{
   font-family: 'Inter';
   font-style: normal;
   color: #292525;
-  background-image: url(/images/background.png);
+  background-image: url(~/images/background.png);
   background-size: cover;
 }
 
@@ -111,7 +111,7 @@ transition: 0.3s;
 .search{
   box-sizing: border-box;
   background: #D9D9D9;
-  background-image: url(/images/search_background.png);
+  background-image: url(~/images/search_background.png);
   background-repeat: no-repeat;
   background-size: 100%;
   padding: 0.625vw 4vw;
@@ -170,7 +170,7 @@ transition: 0.3s;
 }
 
 .add_project{
-  background-image: url(/images/button_add.png);
+  background-image: url(~/images/button_add.png);
   background-repeat: no-repeat;
   background-size: contain;
   width: 5.20vw;

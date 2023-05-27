@@ -1,23 +1,12 @@
-﻿@model Dictionary<int, Person>
+﻿
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "_Layout"; 
 }
-<tаblе>
-    <thead><tr><th>ID</th><th>Client</th><th>Location</th></tr></thead>     
-    <tbody>
-        @foreach (var r in Model)
-        {
-            <tr>
-                <td>@r.Key</td>
-                <td>@r.Value.Login</td>
-                <td>@r.Value.Id</td>
-            </tr>
-        }
-    </tbody>
-</table>
+
 <div class="text-center">
         <h2>Основная страница</h2>
-        <p><a class="Ьtn Ьtn-primary" asp-action="LogIn"> Войти</a></p>
-        <p><a class="Ьtn Ьtn-primary" asp-action="Index"> Моя страница</a></p>
+        <p><a class="Ьtn Ьtn-primary" asp-action="LogIn" asp-controller="Content"> Войти</a></p>
+        <p><a class="Ьtn Ьtn-primary" asp-controller="Content" asp-action="Account"> Моя страница</a></p>
+    <p><a class="Ьtn Ьtn-primary" asp-controller="Content" asp-action="Logout"> Выйти из аккаунта</a></p>
 </div>

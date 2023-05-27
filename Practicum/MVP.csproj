@@ -51,14 +51,10 @@
     <Content Remove="C:\Users\Ярослав\.nuget\packages\bootstrap\5.2.3\contentFiles\any\any\wwwroot\js\bootstrap.js.map" />
     <Content Remove="C:\Users\Ярослав\.nuget\packages\bootstrap\5.2.3\contentFiles\any\any\wwwroot\js\bootstrap.min.js" />
     <Content Remove="C:\Users\Ярослав\.nuget\packages\bootstrap\5.2.3\contentFiles\any\any\wwwroot\js\bootstrap.min.js.map" />
-    <Content Remove="Views\Content\Privacy.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Content\Privacy.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Folder Include="Views\Registr\" />
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>

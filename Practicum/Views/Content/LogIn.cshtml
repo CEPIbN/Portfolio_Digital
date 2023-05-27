@@ -1,4 +1,4 @@
-﻿@model MVP.Models.Person
+﻿@model MVP.ViewModels.LoginViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!DOCTYPE html>
@@ -13,22 +13,20 @@
     <div class="panel panel-success">
         <div class="panel-heading text-center"><h4>Вход в личный кабинет</h4></div>
         <div class="panel-body">
-            <form class="p-a-1" asp-action="Load" method ="get">
+            <form asp-action="Login" asp-controller="Content" asp-anti-forgery="true" class="p-a-1">
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
                 <div class="panel panel-success">
                     <div class="form-group">
-                        <label asp-for="Id" hidden></label><br />
-                    </div>
-                    <div class="form-group">
                         <div class="text-center">
-                            <label asp-for="Login">Login</label><br />
-                            <input type="text" asp-for="Login" />
-                            <span asp-validation-for="Login" />
+                            <label asp-for="Email">Email</label><br />
+                            <input type="email" asp-for="Email" />
+                            <span asp-validation-for="Email" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="text-center">
                             <label asp-for="Password">Password</label><br />
-                            <input asp-for="Password" />
+                            <input type="password" asp-for="Password" />
                             <span asp-validation-for="Password" />
                         </div>
                     </div>
@@ -38,7 +36,7 @@
                 </div>
             </form>
         </div>
-        <p class="text-center"><a class="Ьtn Ьtn-primary" asp-action="LogUp">Зарегестрироваться</a></p>
+        <p class="text-center"><a class="Ьtn Ьtn-primary" asp-action="Register" asp-controller="Content">Зарегестрироваться</a></p>
     </div>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>

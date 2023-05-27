@@ -1,8 +1,4 @@
-﻿@model Person
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    Layout = "_Layout";
-}
+﻿@model MVP.Models.User
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400800&display=swap" rel="stylesheet">
+    <link href="~/css/normalize.css" rel="stylesheet">
+    <link href="~/css/progile.css" rel="stylesheet">
     <title>Profile</title>
 </head>
 <body>
@@ -37,7 +33,7 @@
         </div>
         <div class="main_info">
             <div class="profile_info">
-                <img class="user_img" src="/images/user_img.png">
+                <img class="user_img" src="~/images/user_img.png">
                 <p class="user_name">Никнейм Никнеймович</p>
                 <button class="edit_button">Редактировать</button>
             </div>
@@ -84,14 +80,14 @@
                 </form>
                 <div class="project_gallery">
                     <div class="project_cards existed">
-                        <img src="/images/existed.png"> 
+                        <img src="~/images/existed.png"> 
                         <div style="display: none;" class="add_project_container">
                             <button class="add_project" >Add project</button>
                         </div>
                         <p class="project_name">Название</p>
                     </div>
                     <div class="project_cards not-existed">
-                        <img src="/images/existed.png"> 
+                        <img src="~/images/existed.png"> 
                         <div class="add_project_container">
                             <button class="add_project">Add project</button>
                         </div>

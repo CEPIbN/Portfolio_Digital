@@ -1,12 +1,22 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using MVP.Controllers;
 using MVP.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// добавляем контекст ApplicationContext в качестве сервиса в приложение
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new PathString("/Content/LogIn");
+                });
 builder.Services.AddControllersWithViews();
 // добавляем поддержку контроллеров
-builder.Services.AddSingleton<IPersonRepository, FakePersonRepository>();
 var app = builder.Build();
 
 app.UseStaticFiles();
@@ -20,14 +30,13 @@ app.UseAuthorization();
 
 // устанавливаем сопоставление маршрутов с контроллерами
 app.MapControllerRoute(
-	name: "user",
-	pattern: "users/{login}",
+    name: "user",
+    pattern: "users/{login}/home",
     defaults: new { Controller = "Content", Action = "Account" });
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller = Home}/{action = Index}/{id?}",
+    pattern: "{controller}/{action}/{id?}",
     defaults: new { Controller = "Home", Action = "Index" });
-
 
 
 app.Run();
