@@ -2,7 +2,7 @@ body{
   font-family: 'Inter';
   font-style: normal;
   color: #292525;
-  background-image: url(~/images/background.png);
+  background-image: url(../images/background.png);
   background-size: cover;
 }
 
@@ -38,14 +38,14 @@ button{
   margin-right: 2.08vw;
 }
 
-.navigation{
-  font-weight: 400;
-  font-size: 1.35vw;
-  line-height: 1.61vw;
+.navigation {
+    font-weight: 400;
+    font-size: 1.35vw;
+    line-height: 1.61vw;
 }
 
-.navigation_item{
-  margin-right: 1.198vw;
+.navigation_item {
+    margin-right: 1.198vw;
 }
 
 .division{
@@ -94,35 +94,54 @@ button{
   line-height: 0.98vw;
 }
 
-.edit_button{
-  font-weight: 400;
-  font-size: 1.04vw;
-  line-height: 1.25vw;
-  background: #8D8D8D;
-  border-radius: 1.38vw;
-  padding: 0.72vw 1.04vw;
+.edit_button {
+    font-weight: 400;
+    font-size: 1.04vw;
+    line-height: 1.25vw;
+    background: #8D8D8D;
+    border-radius: 1.38vw;
+    padding: 0.72vw 1.04vw;
+    margin-bottom: 0.7vw;
 }
 
-.edit_button:hover{
-background-color: #15CE86;
-transition: 0.3s;
+.logout_button {
+    color: black;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1.04vw;
+    line-height: 1.25vw;
+    background: #8D8D8D;
+    border-radius: 1.38vw;
+    padding: 0.72vw 1.04vw;
 }
 
-.search{
-  box-sizing: border-box;
-  background: #D9D9D9;
-  background-image: url(~/images/search_background.png);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  padding: 0.625vw 4vw;
-  opacity: 0.95;
-  border-radius: 0.93vw 0.93vw 0px 0px;
-  border: none;
-  font-weight: 400;
-  font-size: 1.66vw;
-  line-height: 2.03vw;
-  width: 73.5vw;
-  margin-bottom: 1.25vw;
+.edit_button:hover {
+    background-color: #15CE86;
+    transition: 0.3s;
+    color: black;
+}
+
+.logout_button:hover {
+    background-color: #15CE86;
+    transition: 0.3s;
+    color: black;
+}
+
+.search {
+    box-sizing: border-box;
+    background: #D9D9D9;
+    background-image: url(../images/search_background.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 0.625vw 4vw;
+    opacity: 0.95;
+    border-radius: 0.93vw 0.93vw 0px 0px;
+    border: none;
+    font-weight: 400;
+    font-size: 1.66vw;
+    line-height: 2.03vw;
+    width: 73.5vw;
+    margin-bottom: 1.25vw;
 }
 
 .filters_box{
@@ -170,12 +189,15 @@ transition: 0.3s;
 }
 
 .add_project{
-  background-image: url(~/images/button_add.png);
+  text-decoration: none;
+  display: block;
+  background-image: url(../images/button_add.png);
   background-repeat: no-repeat;
   background-size: contain;
   width: 5.20vw;
   height: 5.20vw;
   color:transparent;
+  text-decoration: none;
 }
 
 .add_project_container{
