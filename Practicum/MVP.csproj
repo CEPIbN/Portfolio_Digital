@@ -54,7 +54,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Registr\" />
     <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
