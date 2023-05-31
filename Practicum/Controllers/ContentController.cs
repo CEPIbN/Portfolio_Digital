@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MVP.Controllers
 {
@@ -74,31 +76,53 @@ namespace MVP.Controllers
             }
             return View(model);
         }
-
-        /*[HttpPost]
-        public async Task<IActionResult> Upload(string login)
+		[Authorize]
+		[HttpGet]
+        public IActionResult Upload()
         {
-            IFormFileCollection files = Request.Form.Files;
-            // путь к папке, где будут храниться файлы
-            var uploadPath = $"{Directory.GetCurrentDirectory()}/{login}";
-            // создаем папку для хранения файлов
-            Directory.CreateDirectory(uploadPath);
-            foreach (var file in files)
+            return View(); 
+        }
+
+		[Authorize]
+		[HttpPost]
+        public async Task<IActionResult> Upload(IFormFile f)
+        {
+            IFormFile file = Request.Form.Files[0];
+            if (file == null || file.Length == 0)
             {
-                // путь к папке uploads
-                string fullPath = $"{uploadPath}/{file.FileName}";
+                return RedirectToAction("Upload");
+			}
 
-                // сохраняем файл в папку uploads
-                using (var fileStream = new FileStream(fullPath, FileMode.Create))
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.CopyToAsync(memoryStream);
+                var fileData = new FileData
                 {
-                    await file.CopyToAsync(fileStream);
-                }
-            }
-            //return Ok(files);
-            return View("Account", repository.People.First(item => item.Value.Login == login).Value);
-        }*/
+                    FileName = file.FileName,
+                    ContentType = file.ContentType,
+                    Data = memoryStream.ToArray()
+                };
 
-        private async Task Authenticate(string userName)
+                // Сохраните файл в базе данных
+                db.Files.Add(fileData);
+            }
+			await db.SaveChangesAsync();
+
+			return RedirectToAction("Account");
+		}
+
+		public async Task<IActionResult> DownloadFile(int id)
+		{
+			var fileData = await db.Files.FindAsync(id);
+			if (fileData == null)
+			{
+				return NotFound();
+			}
+
+			return File(fileData.Data, fileData.ContentType, fileData.FileName);
+		}
+
+		private async Task Authenticate(string userName)
         {
             // создаем один claim
             var claims = new List<Claim>
@@ -116,6 +140,16 @@ namespace MVP.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Content");
         }
+
+        
     }
+    /*public class AuthOptions
+    {
+        public const string ISSUER = "MyAuthServer"; // издатель токена
+        public const string AUDIENCE = "MyAuthClient"; // потребитель токена
+        const string KEY = "mysupersecret_secretkey!123";   // ключ для шифрации
+        public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
+            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
+    }*/
 }
 

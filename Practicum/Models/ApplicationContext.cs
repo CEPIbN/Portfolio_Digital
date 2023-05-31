@@ -5,6 +5,7 @@ namespace MVP.Models
     public class ApplicationContext: DbContext
     {
         public DbSet<User> Users { get; set; } = null!;
+        public DbSet<FileData> Files { get; set; } = null!;
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
