@@ -39,10 +39,19 @@ namespace MVP.Controllers
             var user = await db.Users.FirstOrDefaultAsync(item => item.Email == userName);
             if (userData != null)
             {
+                byte[] imageData;
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    await userData.Avatar.CopyToAsync(memoryStream);
+                    imageData = memoryStream.ToArray();
+                }
                 user.Age = userData.Age;
                 user.Name = userData.Name;
                 user.LastName = userData.LastName;
                 user.PhoneNumber = userData.PhoneNumber;
+                user.Avatar = imageData;
+                await db.SaveChangesAsync();
                 await Response.WriteAsJsonAsync(user);
             }
         }
