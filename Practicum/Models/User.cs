@@ -4,6 +4,7 @@ namespace MVP.Models
 {
     public class User
     {
+        public byte[]? Avatar { get; set; }
         public string? Name { get; set; }
         public string? LastName { get; set; }
         public string? PhoneNumber { get; set; }
