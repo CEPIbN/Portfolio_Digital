@@ -1,8 +1,11 @@
 ﻿using Azure;
+using Azure.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVP.Models;
+using MVP.ViewModels;
+using System;
 
 namespace MVP.Controllers
 {
@@ -26,6 +29,20 @@ namespace MVP.Controllers
             }
             else
             {
+                await Response.WriteAsJsonAsync(user);
+            }
+        }
+        public async Task Update()
+        {
+            UserInfoModel? userData = await Request.ReadFromJsonAsync<UserInfoModel>();
+            var userName = User.Identity.Name;
+            var user = await db.Users.FirstOrDefaultAsync(item => item.Email == userName);
+            if (userData != null)
+            {
+                user.Age = userData.Age;
+                user.Name = userData.Name;
+                user.LastName = userData.LastName;
+                user.PhoneNumber = userData.PhoneNumber;
                 await Response.WriteAsJsonAsync(user);
             }
         }

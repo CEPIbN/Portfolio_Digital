@@ -140,6 +140,11 @@ namespace MVP.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult Information()
+        { 
+            return View();
+        }
     }
 }
 
