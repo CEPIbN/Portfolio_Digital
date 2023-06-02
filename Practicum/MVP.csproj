@@ -63,7 +63,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\User\Index.cshtml" />
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
   <ItemGroup>
