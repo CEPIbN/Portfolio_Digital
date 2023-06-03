@@ -37,7 +37,7 @@
         <div class="main_info">
             <div class="profile_info">
                 <img class="user_img" src="~/images/user_img.png">
-                <p class="user_name">Никнейм Никнеймович</p>
+                <p class="user_name" id ="login"></p>
                 <button class="edit_button">Редактировать</button>
                 <a class="logout_button" asp-controller="Content" asp-action="Logout" method="post">Выйти</a>
             </div>
@@ -100,5 +100,23 @@
             </div>
         </div>
     </main>
+    <script>
+        send();
+        async function send() {
+            const response = await fetch("/api/GetData", {
+                method: "GET",
+                headers: { "Accept": "application/json"}
+            });
+            if (response.ok === true) {
+                const user = await response.json();
+                document.getElementById("login").innerText = user.login;
+            }
+            else {
+                // если произошла ошибка, получаем сообщение об ошибке
+                const error = await response.json();
+                console.log(error.message); // и выводим его на консоль
+            }
+        }
+    </script>
 </body>
 </html>
