@@ -111,17 +111,6 @@ namespace MVP.Controllers
 			return RedirectToAction("Account");
 		}
 
-		public async Task<IActionResult> DownloadFile(int id)
-		{
-			var fileData = await db.Files.FindAsync(id);
-			if (fileData == null)
-			{
-				return NotFound();
-			}
-
-			return File(fileData.Data, fileData.ContentType, fileData.FileName);
-		}
-
 		private async Task Authenticate(string userName)
         {
             // создаем один claim
