@@ -100,23 +100,5 @@
             </div>
         </div>
     </main>
-    <script>
-        send();
-        async function send() {
-            const response = await fetch("/api/GetData", {
-                method: "GET",
-                headers: { "Accept": "application/json"}
-            });
-            if (response.ok === true) {
-                const user = await response.json();
-                document.getElementById("login").innerText = user.login;
-            }
-            else {
-                // если произошла ошибка, получаем сообщение об ошибке
-                const error = await response.json();
-                console.log(error.message); // и выводим его на консоль
-            }
-        }
-    </script>
 </body>
 </html>

@@ -9,7 +9,7 @@ using System;
 
 namespace MVP.Controllers
 {
-    [Route("api/[action]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UserApiController : ControllerBase
     {
@@ -34,6 +34,7 @@ namespace MVP.Controllers
             }
             return Ok(new { login = $"{user.Login}" });
         }
+        [HttpPost]
         public async Task Update([FromBody] UserInfoModel userData)
         {
             //UserInfoModel? userData = await Request.ReadFromJsonAsync<UserInfoModel>();
@@ -41,7 +42,7 @@ namespace MVP.Controllers
             var user = await db.Users.FirstOrDefaultAsync(item => item.Email == userName);
             if (userData != null)
             {
-                byte[] imageData;
+                /*byte[] imageData;
                 if (userData.Avatar != null)
                 {
                     using (var memoryStream = new MemoryStream())
@@ -52,7 +53,7 @@ namespace MVP.Controllers
                     }
                 }
                 else
-                    user.Avatar = new byte[0];
+                    user.Avatar = new byte[0];*/
                 user.Age = userData.Age;
                 user.Name = userData.Name ?? "";
                 user.LastName = userData.LastName ?? "";
