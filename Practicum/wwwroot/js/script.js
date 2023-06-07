@@ -54,5 +54,5 @@ async function updateData() {
         console.error('Ошибка обновления данных:', error);
     }
 }
-document.getElementById("resetBtn").addEventListener("click", () => updateData());
 getData();
+document.getElementById("resetBtn").addEventListener("click", () => updateData());

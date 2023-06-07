@@ -1,9 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVP.Models
 {
     public class User
     {
+        [InverseProperty("User")]
+        public List<FileData> Projects { get; set; }
         public byte[] Avatar { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -19,6 +22,7 @@ namespace MVP.Models
         public string Email { get; set; }
         public User()
         {
+            Projects = new List<FileData>();
             Avatar = new byte[0];
             Name = "";
             LastName = "";
