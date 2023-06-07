@@ -82,36 +82,48 @@ namespace MVP.Controllers
         {
             return View(); 
         }
-
-		[Authorize]
-		[HttpPost]
+        [Authorize]
+        [HttpPost]
         public async Task<IActionResult> Upload(IFormFile f)
         {
+
             IFormFile file = Request.Form.Files[0];
             if (file == null || file.Length == 0)
             {
-                return RedirectToAction("Upload");
-			}
-
-            using (var memoryStream = new MemoryStream())
-            {
-                await file.CopyToAsync(memoryStream);
-                var fileData = new FileData
-                {
-                    FileName = file.FileName,
-                    ContentType = file.ContentType,
-                    Data = memoryStream.ToArray()
-                };
-
-                // Сохраните файл в базе данных
-                db.Files.Add(fileData);
+                return RedirectToAction("Upload", "Content");
             }
-			await db.SaveChangesAsync();
+            try
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(memoryStream);
+                    var userName = User.Identity.Name;
+                    var user = await db.Users.FirstOrDefaultAsync(item => item.Email == userName);
+                    var fileData = new FileData
+                    {
+                        FileName = file.FileName,
+                        ContentType = file.ContentType,
+                        Data = memoryStream.ToArray(),
+                        UserId = user.Id,
+                    };
 
-			return RedirectToAction("Account");
-		}
+                    // Сохраните файл в базе данных
+                    db.Projects.Add(fileData);
 
-		private async Task Authenticate(string userName)
+                }
+                await db.SaveChangesAsync();
+
+                return RedirectToAction("Account");
+            }
+            catch
+            {
+                Response.StatusCode = 404;
+                await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
+                return BadRequest();
+            }
+        }
+
+        private async Task Authenticate(string userName)
         {
             // создаем один claim
             var claims = new List<Claim>

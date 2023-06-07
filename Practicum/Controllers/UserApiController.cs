@@ -21,8 +21,7 @@ namespace MVP.Controllers
         [HttpGet]
         public async Task<IActionResult> GetData()
         {
-            var userName = User.Identity.Name;
-            var user = await db.Users.FirstOrDefaultAsync(item => item.Email == userName);
+            var user = await GetAuthUser();
             if (user == null) 
             {
                 Response.StatusCode = 404;
@@ -30,16 +29,15 @@ namespace MVP.Controllers
             }
             else
             {
-                await Response.WriteAsJsonAsync(new {login  =  $"{user.Login}" });
+                await Response.WriteAsJsonAsync(user);
             }
-            return Ok(new { login = $"{user.Login}" });
+            return Ok(user);
         }
         [HttpPost]
         public async Task Update([FromBody] UserInfoModel userData)
         {
             //UserInfoModel? userData = await Request.ReadFromJsonAsync<UserInfoModel>();
-            var userName = User.Identity.Name;
-            var user = await db.Users.FirstOrDefaultAsync(item => item.Email == userName);
+            var user = await GetAuthUser();
             if (userData != null)
             {
                 /*byte[] imageData;
@@ -61,6 +59,47 @@ namespace MVP.Controllers
                 await db.SaveChangesAsync();
                 await Response.WriteAsJsonAsync(user);
             }
+        }
+        [HttpPost]
+        public async Task<IActionResult> UploadFile([FromBody] UploadFileViewModel model)
+        {
+
+            //IFormFile file = model.FileData;
+            try
+            {
+                IFormFile file = model.FileData;
+                using (var memoryStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(memoryStream);
+                    var user = await GetAuthUser();
+                    var fileData = new FileData
+                    {
+                        FileName = model.FileName,
+                        ContentType = file.ContentType,
+                        Data = memoryStream.ToArray(),
+                        UserId = user.Id,
+                    };
+
+                    // Сохраните файл в базе данных
+                    db.Projects.Add(fileData);
+
+                }
+                await db.SaveChangesAsync();
+
+                return RedirectToAction("Account");
+            }
+            catch
+            {
+                Response.StatusCode = 404;
+                await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
+                return RedirectToAction("Upload", "Content");
+            }
+        }
+        private async Task<User> GetAuthUser()
+        {
+            var userName = User.Identity.Name;
+            var user = await db.Users.FirstOrDefaultAsync(item => item.Email == userName);
+            return user;
         }
     }
 }
