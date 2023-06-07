@@ -11,14 +11,14 @@
             })
     .then(function(response) {
                 if (response.ok) {
-        alert('File uploaded successfully!');
+        alert('Файл успешно загружен');
     form.reset();
                 } else {
-        alert('File upload failed!');
+        alert('Не удалось загрузить файл!');
                 }
             })
     .catch(function(error) {
-        console.error('Error:', error);
+        console.error('Ошибка:', error);
             });
         });
 </script>
