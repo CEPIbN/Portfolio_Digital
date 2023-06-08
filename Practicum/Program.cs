@@ -25,7 +25,7 @@ app.UseAuthorization();
 // устанавливаем сопоставление маршрутов с контроллерами
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller}/{action}/{id?}",я
+    pattern: "{controller}/{action}/{id?}",
     defaults: new { Controller = "Home", Action = "Index" });
 
 
