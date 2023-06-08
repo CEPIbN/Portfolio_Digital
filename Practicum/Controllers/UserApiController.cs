@@ -9,7 +9,7 @@ using System;
 
 namespace MVP.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/{controller}/{action}")]
     [ApiController]
     public class UserApiController : ControllerBase
     {
@@ -33,6 +33,7 @@ namespace MVP.Controllers
             }
             return Ok(user);
         }
+
         [HttpPost]
         public async Task Update([FromBody] UserInfoModel userData)
         {
@@ -56,6 +57,7 @@ namespace MVP.Controllers
                 user.Name = userData.Name ?? "";
                 user.LastName = userData.LastName ?? "";
                 user.PhoneNumber = userData.PhoneNumber ?? "";
+                db.Users.Update(user);
                 await db.SaveChangesAsync();
                 await Response.WriteAsJsonAsync(user);
             }

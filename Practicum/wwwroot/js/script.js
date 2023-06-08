@@ -1,7 +1,6 @@
-﻿
-async function getData() {
+﻿/*async function getData() {
     try {
-        const response = await fetch('/api/UserApi/GetData');
+        const response = await fetch('api/UserApi/GetData');
         if (response.ok) {
             const user = await response.json();
             document.getElementById('name').value = user.name;
@@ -15,7 +14,7 @@ async function getData() {
     } catch (error) {
         console.error('Ошибка получения данных:', error);
     }
-}
+}*/
 
 
 async function updateData() {
@@ -32,7 +31,7 @@ async function updateData() {
     };
 
     try {
-        const response = await fetch('/api/UserApi/Update', {
+        const response = await fetch('api/UserApi/Update', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,5 +53,9 @@ async function updateData() {
         console.error('Ошибка обновления данных:', error);
     }
 }
-getData();
-document.getElementById("resetBtn").addEventListener("click", () => updateData());
+//getData();
+const el = document.getElementById('resetBtn');
+if (el) {
+    el.addEventListener("click", () => updateData);
+}
+
