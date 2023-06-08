@@ -54,7 +54,7 @@ async function updateData() {
     }
 }
 //getData();
-const el = document.getElementById('resetBtn');
+const el = document.getElementById('saveBtn');
 if (el) {
     el.addEventListener("click", () => updateData);
 }
