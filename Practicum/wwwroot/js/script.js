@@ -56,6 +56,9 @@ async function updateData() {
 //getData();
 const el = document.getElementById('saveBtn');
 if (el) {
-    el.addEventListener("click", () => updateData);
+    el.addEventListener("submit", (event) => {
+        event.preventDefault(); 
+        updateData(); 
+    });
 }
 
