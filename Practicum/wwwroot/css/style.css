@@ -38,7 +38,6 @@ h1, h2, h3, h4, h5, h6 {
 .header_inner {
     display: flex;
     justify-content: space-between;
-    
 }
 
 .header_logo {
@@ -194,6 +193,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 .profile_main_information {
+    display:flex;
     width: 506px;
     height: 922px;
     background: #1F4D40;
@@ -202,11 +202,17 @@ h1, h2, h3, h4, h5, h6 {
 .profile_main_projectadd_button {
     color: #F5F5C8;
     text-decoration: none;
+    height: 50px;
+    font-family: 'Didact Gothic';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 42px;
     user-select: none;
     background: #2E1D1A;
     padding: 2px 10px;
-    margin-right: 5px;
-    margin-left: 50px;
+    
+    
     outline: none;
     transition: background 0.2s linear;
 }
@@ -214,3 +220,33 @@ h1, h2, h3, h4, h5, h6 {
         color: #F5F5C8;
         background: #B93726;
     }
+
+.profile_main_edit_button {
+    color: #F5F5C8;
+    text-decoration: none;
+    height: 50px;
+    font-family: 'Didact Gothic';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 42px;
+    user-select: none;
+    background: #2E1D1A;
+    padding: 2px 10px;
+    
+    outline: none;
+    transition: background 0.2s linear;
+}
+
+.profile_main_edit_button:hover {
+    color: #F5F5C8;
+    background: #B93726;
+}
+
+.profile_main_inner{
+    display: flex;
+}
+
+.profile_main_buttons{
+    display:block;
+}
