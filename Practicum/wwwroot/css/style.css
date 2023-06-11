@@ -1,0 +1,186 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    color: #F5F5C8;
+    background: #F5F5C8;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+
+/* Header */
+
+.header {
+    padding-top: 48px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header_inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_logo {
+    width: 242px;
+    height: 144px;
+    user-select: none;
+    padding: 23px 7px;
+    font-size: 39px;
+    line-height: 48px;
+    background: #DB5141;
+}
+
+.header_nav_top {
+    display: flex;
+    font-size: 37px;
+    margin-bottom: 5px;
+}
+
+.header_nav_top_rectangle {
+    width: 950px; /*1147*/
+    height: 89px;
+    user-select: none;
+    padding: 23px 10px;
+    margin-right: 5px;
+    outline: none;
+    background: #2E1D1A;
+    transition: background 0.2s linear;
+}
+
+    .header_nav_top_rectangle:hover {
+        background: #B93726;
+    }
+
+.header_account_button {
+    color: #F5F5C8;
+    text-decoration: none;
+    user-select: none;
+    background: #2E1D1A;
+    padding: 16px 7px;
+    margin-right: 5px;
+    outline: none;
+    transition: background 0.2s linear;
+}
+
+    .header_account_button:hover {
+        background: #B93726;
+    }
+
+.header_logout_button {
+    color: #F5F5C8;
+    text-decoration: none;
+    user-select: none;
+    background: #2E1D1A;
+    padding: 16px 7px;
+    outline: none;
+    transition: background 0.2s linear;
+}
+
+    .header_logout_button:hover {
+        background: #B93726;
+    }
+
+.header_nav_bottom {
+    display: flex;
+    font-size: 30px;
+}
+
+.header_home_button {
+    color: #F5F5C8;
+    text-decoration: none;
+    user-select: none;
+    background: #2E1D1A;
+    padding: 2px 10px;
+    margin-right: 5px;
+    outline: none;
+    transition: background 0.2s linear;
+}
+
+    .header_home_button:hover {
+        background: #B93726;
+    }
+
+.header_popular_button {
+    color: #F5F5C8;
+    text-decoration: none;
+    user-select: none;
+    background: #2E1D1A;
+    padding: 2px 10px;
+    margin-right: 5px;
+    outline: none;
+    transition: background 0.2s linear;
+}
+
+    .header_popular_button:hover {
+        background: #B93726;
+    }
+
+.header_nav_bottom_rectangle {
+    width: 1030px; /*1054*/
+    height: 51.33px; /*50*/
+    outline: none;
+    background: #2E1D1A;
+    transition: background 0.2s linear;
+}
+
+    .header_nav_bottom_rectangle:hover {
+        background: #B93726;
+    }
+
+/* Main */
+
+.main {
+    padding-top: 260px;
+}
+
+.tool_bar {
+    width: 1600px;
+    height: 102px;
+    background: #1F4D40;
+    display: flex;
+}
+
+.search input {
+}
+
+
+
+/* Profile */
+
+.profile {
+}
+
+.profile_header_nav_top_rectangle {
+    width: 1134px; /*1147*/
+    height: 89px;
+    user-select: none;
+    padding: 23px 10px;
+    margin-right: 5px;
+    outline: none;
+    background: #2E1D1A;
+    transition: background 0.2s linear;
+}
+
+    .profile_header_nav_top_rectangle:hover {
+        background: #B93726;
+    }

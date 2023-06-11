@@ -42,7 +42,7 @@ namespace MVP.Controllers
                 {
                     await Authenticate(model.Email); // аутентификация
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Account", "Content");
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
@@ -69,7 +69,7 @@ namespace MVP.Controllers
 
                     await Authenticate(model.Email); // аутентификация
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Account", "Content");
                 }
                 else
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");
