@@ -1,64 +1,36 @@
-﻿/*async function getData() {
-    try {
-        const response = await fetch('api/UserApi/GetData');
-        if (response.ok) {
-            const user = await response.json();
-            document.getElementById('name').value = user.name;
-            document.getElementById('lastName').value = user.lastName;
-            document.getElementById('phoneNumber').value = user.phoneNumber;
-            document.getElementById('age').value = user.age;
-        } else {
-            const error = await response.json();
-            console.error('Ошибка получения данных:', error.message);
-        }
-    } catch (error) {
-        console.error('Ошибка получения данных:', error);
-    }
-}*/
+﻿document.addEventListener("DOMContentLoaded", function () {
+    const saveBtn = document.getElementById("saveBtn");
 
+    saveBtn.addEventListener("click", function () {
+        const firstName = document.getElementById("firstName").value;
+        const middleName = document.getElementById("middleName").value;
+        const phoneNumber = document.getElementById("phoneNumber").value;
+        const age = document.getElementById("age").value;
 
-async function updateData() {
-    const name = document.getElementById('name').value;
-    const lastName = document.getElementById('lastName').value;
-    const phoneNumber = document.getElementById('phoneNumber').value;
-    const age = document.getElementById('age').value;
+        const formData = {
+            firstName: firstName,
+            middleName: middleName,
+            phoneNumber: phoneNumber,
+            age: age
+        };
 
-    const userData = {
-        name,
-        lastName,
-        phoneNumber,
-        age
-    };
-
-    try {
-        const response = await fetch('api/UserApi/Update', {
-            method: 'POST',
+        const requestOptions = {
+            method: "POST",
+            body: JSON.stringify(formData),
             headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        });
+                "Content-Type": "application/json"
+            }
+        };
 
-        if (response.ok) {
-            const user = await response.json();
-            document.getElementById('name').value = user.name;
-            document.getElementById('lastName').value = user.lastName;
-            document.getElementById('phoneNumber').value = user.phoneNumber;
-            document.getElementById('age').value = user.age;
-        } else {
-            const error = await response.json();
-            console.error('Ошибка обновления данных:', error.message);
-        }
-    } catch (error) {
-        console.error('Ошибка обновления данных:', error);
-    }
-}
-//getData();
-const el = document.getElementById('saveBtn');
-if (el) {
-    el.addEventListener("submit", (event) => {
-        event.preventDefault(); 
-        updateData(); 
+            fetch("/api/UserApi/Update", requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                // Обработка успешного ответа от сервера
+                console.log("Данные успешно отправлены!", data);
+            })
+            .catch(error => {
+                // Обработка ошибки
+                console.error("Произошла ошибка при отправке данных:", error);
+            });
     });
-}
-
+});

@@ -1,4 +1,3 @@
-<script>
     document.getElementById('uploadForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -21,4 +20,3 @@
         console.error('Ошибка:', error);
             });
         });
-</script>
