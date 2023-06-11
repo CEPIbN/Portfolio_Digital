@@ -1,25 +1,52 @@
-﻿async function updateData() {
-    var form = document.getElementById("infoForm");
-    var formData = new FormData(form);
+﻿getData();
+const infoForm = document.getElementById("infoForm");
 
-    fetch("/api/UserApi/Update", {
+infoForm.addEventListener("submit", function () {
+    const name = document.getElementById("name").value;
+    const lastName = document.getElementById("lastName").value;
+    const phoneNumber = document.getElementById("phoneNumber").value;
+    const age = document.getElementById("age").value;
+
+    const formData = {
+        name: name,
+        lastName: lastName,
+        phoneNumber: phoneNumber,
+        age: age
+    };
+
+    const requestOptions = {
         method: "POST",
-        body: formData
-    })
-        .then(function (response) {
-            if (response.ok) {
-                console.log("Данные успешно отправлены");
-            } else {
-                console.log("Ошибка при отправке данных с сервера");
-            }
+        body: JSON.stringify(formData),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    };
+
+    fetch("/api/UserApi/Update", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            getData();
+            console.log("Данные успешно отправлены!", data);
         })
-        .catch(function (error) {
-            console.log("Ошибка при выполнении запроса");
-            console.log(error);
+        .catch(error => {
+            // Обработка ошибки
+            console.error("Произошла ошибка при отправке данных:", error);
         });
+});
+    
+async function getData() {
+    const response = await fetch("/api/UserApi/GetData", {
+        method: "GET"
+    });
+    if (response.ok) {
+        const user = response.json();
+        document.getElementById("name").value = user.Name;
+        document.getElementById("lastName").value = user.LastName;
+        document.getElementById("phoneNumber").value = user.PhoneNumber;
+        document.getElementById("age").value = user.Age;
+    }
+    else {
+        const error = response.json();
+        console.error("Произошла ошибка при отправке данных:", error);
+    }
 }
-document.getElementById('infoForm').addEventListener('submit', () => updateData());
-
-
-
-

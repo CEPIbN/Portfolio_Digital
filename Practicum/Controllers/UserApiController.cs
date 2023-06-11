@@ -97,13 +97,13 @@ namespace MVP.Controllers
                 }
                 await db.SaveChangesAsync();
 
-                return RedirectToAction("Account");
+                return Ok();
             }
             catch
             {
                 Response.StatusCode = 404;
                 await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
-                return RedirectToAction("Index", "Home");
+                return BadRequest();
             }
         }
         private async Task<User> GetAuthUser()
