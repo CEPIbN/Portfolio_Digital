@@ -2,14 +2,14 @@
     const saveBtn = document.getElementById("saveBtn");
 
     saveBtn.addEventListener("click", function () {
-        const firstName = document.getElementById("firstName").value;
-        const middleName = document.getElementById("middleName").value;
+        const name = document.getElementById("name").value;
+        const lastName = document.getElementById("lastName").value;
         const phoneNumber = document.getElementById("phoneNumber").value;
         const age = document.getElementById("age").value;
 
         const formData = {
-            firstName: firstName,
-            middleName: middleName,
+            name: name,
+            lastName: lastName,
             phoneNumber: phoneNumber,
             age: age
         };
