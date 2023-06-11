@@ -25,7 +25,6 @@ infoForm.addEventListener("submit", function () {
     fetch("/api/UserApi/Update", requestOptions)
         .then(response => response.json())
         .then(data => {
-            getData();
             console.log("Данные успешно отправлены!", data);
         })
         .catch(error => {

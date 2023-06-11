@@ -10,7 +10,10 @@ document.getElementById('uploadForm').addEventListener('submit', function (e) {
             if (response.ok) {
                 alert('Файл успешно загружен');
                 form.reset();
-            } else {
+            }
+            else {
+                const error = response.json();
+                console.log("Ошибка:", error);
                 alert('Не удалось загрузить файл!');
             }
         })

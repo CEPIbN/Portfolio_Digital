@@ -26,12 +26,13 @@ namespace MVP.Controllers
             {
                 Response.StatusCode = 404;
                 await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
+                return BadRequest();
             }
             else
             {
-                await Response.WriteAsJsonAsync(user);
+                //await Response.WriteAsJsonAsync(user);
+                return Ok(user);
             }
-            return Ok(user);
         }
 
         [HttpPost]
@@ -77,11 +78,12 @@ namespace MVP.Controllers
             //IFormFile file = model.FileData;
             try
             {
+                var user = await GetAuthUser();
                 IFormFile file = model.FileData;
                 using (var memoryStream = new MemoryStream())
                 {
                     await file.CopyToAsync(memoryStream);
-                    var user = await GetAuthUser();
+                    
                     var fileData = new FileData
                     {
                         Description = model.Description,
