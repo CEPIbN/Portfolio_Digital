@@ -1,7 +1,9 @@
 ﻿getData();
 const infoForm = document.getElementById("infoForm");
 
-infoForm.addEventListener("submit", function () {
+infoForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
     const name = document.getElementById("name").value;
     const lastName = document.getElementById("lastName").value;
     const phoneNumber = document.getElementById("phoneNumber").value;
@@ -33,20 +35,20 @@ infoForm.addEventListener("submit", function () {
             console.error("Произошла ошибка при отправке данных:", error);
         });
 });
-    
+
 async function getData() {
     const response = await fetch("/api/UserApi/GetData", {
         method: "GET"
     });
+
     if (response.ok) {
-        const user = response.json();
+        const user = await response.json();
         document.getElementById("name").value = user.Name;
         document.getElementById("lastName").value = user.LastName;
         document.getElementById("phoneNumber").value = user.PhoneNumber;
         document.getElementById("age").value = user.Age;
-    }
-    else {
-        const error = response.json();
-        console.error("Произошла ошибка при отправке данных:", error);
+    } else {
+        const error = await response.json();
+        console.error("Произошла ошибка при получении данных:", error);
     }
 }
