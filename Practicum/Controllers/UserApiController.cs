@@ -35,12 +35,13 @@ namespace MVP.Controllers
         }
 
         [HttpPost]
-        public async Task Update([FromBody] UserInfoModel userData)
+        public async Task<IActionResult> Update([FromBody] UserInfoModel userData)
         {
-            //UserInfoModel? userData = await Request.ReadFromJsonAsync<UserInfoModel>();
-            var user = await GetAuthUser();
-            if (userData != null)
+            try
             {
+                //UserInfoModel? userData = await Request.ReadFromJsonAsync<UserInfoModel>();
+                var user = await GetAuthUser();
+                Console.WriteLine("обновление данных пользователя");
                 /*byte[] imageData;
                 if (userData.Avatar != null)
                 {
@@ -60,6 +61,13 @@ namespace MVP.Controllers
                 db.Users.Update(user);
                 await db.SaveChangesAsync();
                 await Response.WriteAsJsonAsync(user);
+                return RedirectToAction("Account", "Content");
+            }
+            catch
+            {
+                Response.StatusCode = 404;
+                await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
+                return BadRequest();
             }
         }
         [HttpPost]
@@ -76,6 +84,7 @@ namespace MVP.Controllers
                     var user = await GetAuthUser();
                     var fileData = new FileData
                     {
+                        Description = model.Description,
                         FileName = model.FileName,
                         ContentType = file.ContentType,
                         Data = memoryStream.ToArray(),
@@ -83,7 +92,7 @@ namespace MVP.Controllers
                     };
 
                     // Сохраните файл в базе данных
-                    db.Projects.Add(fileData);
+                    user.Projects.Add(fileData);
 
                 }
                 await db.SaveChangesAsync();
@@ -94,7 +103,7 @@ namespace MVP.Controllers
             {
                 Response.StatusCode = 404;
                 await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
-                return RedirectToAction("Upload", "Content");
+                return RedirectToAction("Index", "Home");
             }
         }
         private async Task<User> GetAuthUser()

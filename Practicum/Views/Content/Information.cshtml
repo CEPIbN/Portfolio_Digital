@@ -1,25 +1,50 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@*@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers*@
 @{
     Layout = "_Layout";
 }
 
-<form>
+<form id ="infoForm">
     <label for="firstName">Имя:</label>
-    <input type="text" id="firstName" name="firstName" required>
+    <input type="text" id="name" name="name">
 
-    <label for="middleName">Второе имя:</label>
-    <input type="text" id="middleName" name="middleName" required>
+    <label for="lastName">Второе имя:</label>
+    <input type="text" id="lastName" name="lastName">
 
     <label for="phoneNumber">Номер телефона:</label>
-    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+    <input type="tel" id="phoneNumber" name="phoneNumber">
 
     <label for="age">Возраст:</label>
-    <input type="number" id="age" name="age" required>
+    <input type="number" id="age" name="age">
 
-    <button type="button" id="saveBtn">Сохранить</button>
-</form>    
+    <button type="submit" id="saveBtn">Сохранить</button>
+</form>  
 
+@*<script>
+    document.getElementById("infoForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var form = document.getElementById("infoForm");
+        var formData = new FormData(form);
+
+        fetch("/api/UserApi/Update", {
+            method: "POST",
+            body: formData
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    console.log("Данные успешно отправлены");
+                } else {
+                    console.log("Ошибка при отправке данных");
+                }
+            })
+            .catch(function (error) {
+                console.log("Ошибка при выполнении запроса");
+                console.log(error);
+            });
+    });
+
+</script>*@
+<script src="~/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-3.3.2.min.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
-<script src="~/js/script.js"></script>
