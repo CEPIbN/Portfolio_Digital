@@ -10,7 +10,7 @@
             if (response.ok) {
                 console.log("Данные успешно отправлены");
             } else {
-                console.log("Ошибка при отправке данных");
+                console.log("Ошибка при отправке данных с сервера");
             }
         })
         .catch(function (error) {
