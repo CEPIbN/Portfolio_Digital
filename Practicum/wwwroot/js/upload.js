@@ -1,6 +1,5 @@
 document.getElementById('uploadForm').addEventListener('submit', function (e) {
     e.preventDefault();
-    e.preventDefault();
     var form = document.getElementById("uploadForm");
     var formData = new FormData(form);
     fetch('/api/UserApi/UploadFile', {
