@@ -4,8 +4,53 @@
     Layout = "_Layout"; 
 }
 
+
+@*
 <div class="text-center">
-        <h2>Основная страница</h2>
-        <p><a class="Ьtn Ьtn-primary" asp-action="LogIn" asp-controller="Content"> Войти</a></p>
-        <p><a class="Ьtn Ьtn-primary" asp-controller="Content" asp-action="Account"> Моя страница</a></p>
+    <h2>Основная страница</h2>
+    <p><a class="Ьtn Ьtn-primary" asp-action="LogIn" asp-controller="Content"> Войти</a></p>
+    <p><a class="Ьtn Ьtn-primary" asp-controller="Content" asp-action="Account"> Моя страница</a></p>
 </div>
+*@
+
+<head>
+    <meta charset="utf-8">
+    <title>TWIC</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header_inner">
+            <div class="header_logo">There`s What I can</div>
+                    
+            <div class="header_nav">
+                <nav class="header_nav_top">
+                    <div class="header_nav_top_rectangle">From those we deserve</div>
+                        <a class="header_account_button" asp-controller="Content" asp-action="Account">Account</a>
+                        <a class="header_logout_button" asp-controller="Content" asp-action="Logout">LogOut</a>
+                </nav>
+                <nav class="header_nav_bottom">
+                    <a class="header_home_button" href="#">Home</a>
+                    <a class="header_popular_button" href="#">Popular</a>
+                    <div class="header_nav_bottom_rectangle"></div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <div class="container">
+        <div class="tool_bar">
+            <div class="search">
+                <form>
+                    <input type="text" id="searchInput" name="searchInput" placeholder="Name...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+                
+        </div>
+    </div>          
+</main>
+</body>
