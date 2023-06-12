@@ -1,7 +1,9 @@
 ﻿getData();
 const infoForm = document.getElementById("infoForm");
 
-infoForm.addEventListener("submit", function () {
+infoForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
     const name = document.getElementById("name").value;
     const lastName = document.getElementById("lastName").value;
     const phoneNumber = document.getElementById("phoneNumber").value;
@@ -33,7 +35,7 @@ infoForm.addEventListener("submit", function () {
             console.error("Произошла ошибка при отправке данных:", error);
         });
 });
-    
+
 async function getData() {
     fetch("/api/UserApi/GetData")
         .then(response => response.json())
