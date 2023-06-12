@@ -102,6 +102,7 @@ namespace MVP.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         public IActionResult Information()
         { 
             return View();

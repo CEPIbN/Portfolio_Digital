@@ -3,7 +3,7 @@ form.addEventListener('submit', async (event) => {
     event.preventDefault(); 
 
     const formData = new FormData(form); 
-    const response = await fetch('/api/UserApi/UploadFile/', {
+    const response = await fetch('/api/UserApi/UploadFile', {
         method: 'POST',
         body: formData
     });

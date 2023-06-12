@@ -1,8 +1,7 @@
-﻿getData();
+﻿
 const infoForm = document.getElementById("infoForm");
 
-infoForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+infoForm.addEventListener("submit", function () {
 
     const name = document.getElementById("name").value;
     const lastName = document.getElementById("lastName").value;
@@ -27,7 +26,7 @@ infoForm.addEventListener("submit", function (event) {
     fetch("/api/UserApi/Update", requestOptions)
         .then(response => response.json())
         .then(data => {
-            getData();
+            
             console.log("Данные успешно отправлены!", data);
         })
         .catch(error => {
@@ -35,7 +34,7 @@ infoForm.addEventListener("submit", function (event) {
             console.error("Произошла ошибка при отправке данных:", error);
         });
 });
-
+getData();
 async function getData() {
     fetch("/api/UserApi/GetData")
         .then(response => response.json())

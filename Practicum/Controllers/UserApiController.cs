@@ -72,7 +72,7 @@ namespace MVP.Controllers
             }
         }
         [HttpPost]
-        public async Task<IActionResult> UploadFile([FromBody] UploadFileViewModel model)
+        public async Task<IActionResult> UploadFile([FromForm] UploadFileViewModel model)
         {
 
             //IFormFile file = model.FileData;
@@ -91,6 +91,7 @@ namespace MVP.Controllers
                         ContentType = file.ContentType,
                         Data = memoryStream.ToArray(),
                         UserId = user.Id,
+                        User = user
                     };
 
                     // Сохраните файл в базе данных
