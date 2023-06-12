@@ -25,8 +25,8 @@ namespace MVP.Controllers
             if (user == null) 
             {
                 Response.StatusCode = 404;
-                await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
-                return BadRequest();
+                //await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
+                return BadRequest(new { message = "Пользователь не найден" });
             }
             else
             {
@@ -61,14 +61,14 @@ namespace MVP.Controllers
                 user.PhoneNumber = userData.PhoneNumber ?? "";
                 db.Users.Update(user);
                 await db.SaveChangesAsync();
-                await Response.WriteAsJsonAsync(user);
-                return RedirectToAction("Account", "Content");
+                //await Response.WriteAsJsonAsync(user);
+                return Ok(user);
             }
             catch
             {
                 Response.StatusCode = 404;
-                await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
-                return BadRequest();
+                //await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
+                return BadRequest(new { message = "Пользователь не найден" });
             }
         }
         [HttpPost]
@@ -104,8 +104,8 @@ namespace MVP.Controllers
             catch
             {
                 Response.StatusCode = 404;
-                await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
-                return BadRequest();
+                //await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
+                return BadRequest(new { message = "Пользователь не найден" });
             }
         }
         private async Task<User> GetAuthUser()

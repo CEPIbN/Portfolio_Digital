@@ -25,6 +25,7 @@ infoForm.addEventListener("submit", function () {
     fetch("/api/UserApi/Update", requestOptions)
         .then(response => response.json())
         .then(data => {
+            getData();
             console.log("Данные успешно отправлены!", data);
         })
         .catch(error => {
@@ -34,18 +35,16 @@ infoForm.addEventListener("submit", function () {
 });
     
 async function getData() {
-    const response = await fetch("/api/UserApi/GetData", {
-        method: "GET"
-    });
-    if (response.ok) {
-        const user = response.json();
-        document.getElementById("name").value = user.Name;
-        document.getElementById("lastName").value = user.LastName;
-        document.getElementById("phoneNumber").value = user.PhoneNumber;
-        document.getElementById("age").value = user.Age;
-    }
-    else {
-        const error = response.json();
-        console.error("Произошла ошибка при отправке данных:", error);
-    }
+    fetch("/api/UserApi/GetData")
+        .then(response => response.json())
+        .then(data => {
+            // Установка начальных значений полей формы
+            document.getElementById('name').value = data.name;
+            document.getElementById('lastName').value = data.lastName;
+            document.getElementById('phoneNumber').value = data.phoneNumber;
+            document.getElementById('age').value = data.age;
+        })
+        .catch(error => {
+            console.error('Ошибка при получении данных:', error);
+        });
 }

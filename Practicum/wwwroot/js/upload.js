@@ -1,9 +1,18 @@
-document.getElementById('uploadForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var form = document.getElementById("uploadForm");
-    var formData = new FormData(form);
-    fetch('/api/UserApi/UploadFile', {
-        method: 'POST',
+document.getElementById('uploadForm').addEventListener('submit', function () {
+    //e.preventDefault();
+    //var form = document.getElementById("uploadForm");
+    const fileName = document.getElementById("fileName").value;
+    const description = document.getElementById("description").value;
+    const file = document.getElementById("file").value;
+    
+    const fileData = {
+        fileName: fileName,
+        description: description,
+        file: file,
+    };
+    var formData = new FormData(fileData);
+    fetch("/api/UserApi/UploadFile", {
+        method: "POST",
         body: formData
     })
         .then(function (response) {
