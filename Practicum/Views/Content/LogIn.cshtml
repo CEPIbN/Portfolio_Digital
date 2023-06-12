@@ -4,42 +4,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>METANIT.COM</title>
-    <link rel="stylesheet" href="/lib/bootstrap/css/styles.css" />
-    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css"/>
+	<meta charset="utf-8"/>
+	<title>LogIn</title>
+	<link rel="stylesheet" href="~/css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Montserrat:wght@800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="panel panel-success">
-        <div class="panel-heading text-center"><h4>Вход в личный кабинет</h4></div>
-        <div class="panel-body">
-            <form asp-action="Login" asp-controller="Content" asp-anti-forgery="true" class="p-a-1">
-                <div class="validation" asp-validation-summary="ModelOnly"></div>
-                <div class="panel panel-success">
-                    <div class="form-group">
-                        <div class="text-center">
-                            <label asp-for="Email">Email</label><br />
-                            <input type="email" asp-for="Email" />
-                            <span asp-validation-for="Email" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="text-center">
-                            <label asp-for="Password">Password</label><br />
-                            <input type="password" asp-for="Password" />
-                            <span asp-validation-for="Password" />
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <button class="Ьtn Ьtn-primary" type="submit"> Войти </button> 
-                    </div>
-                </div>
-            </form>
-        </div>
-        <p class="text-center"><a class="Ьtn Ьtn-primary" asp-action="Register" asp-controller="Content">Зарегестрироваться</a></p>
-    </div>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
+<div class="log_reg_container">
+	<div class="log_tabel">
+		<div class="log_reg_title">Log in</div>
+		<form asp-action="Login" asp-controller="Content" asp-anti-forgery="true">
+			<div class="validation" asp-validation-summary="ModelOnly"></div>
+			<div class="log_form">
+				<div class="form_string">
+					<input type="email" asp-for="Email" placeholder="Email..."/>
+					<span asp-validation-for="Email"/>
+				</div>
+				<div class="form_string">
+					<input type="password" asp-for="Password" placeholder="Password"/>
+					<span asp-validation-for="Password"/>
+				</div>
+			</div>
+			<div class="form_buttons">
+				<button class="form_button" asp-action="Register" asp-controller="Content"> Register </button>
+				<button class="form_button" type="submit"> Log In </button>
+			</div>
+		</form>
+	</div>
+	<div class="log_reg_label">The developer we deserve</div>
+</div>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>
