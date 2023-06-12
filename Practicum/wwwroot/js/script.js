@@ -1,8 +1,8 @@
 ﻿
 const infoForm = document.getElementById("infoForm");
 
-infoForm.addEventListener("submit", function () {
-
+infoForm.addEventListener("submit", function (event) {
+    event.preventDefault();
     const name = document.getElementById("name").value;
     const lastName = document.getElementById("lastName").value;
     const phoneNumber = document.getElementById("phoneNumber").value;
