@@ -239,9 +239,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .profile_main_information {
     display:flex;
-    width: 506px;
+    width: 507px;
     height: 922px;
     background: #1F4D40;
+    margin-right: 40px;
+    margin-bottom: 40px;
 }
 
 .profile_main_projectadd_button {
@@ -296,18 +298,27 @@ h1, h2, h3, h4, h5, h6 {
     display:block;
 }
 
+.profile_projects_grid {
+    display: flex;
 
+}
+
+.projects_list {
+    
+}
+
+.project {
+
+}
 /* #endregion Profile */
-
 /* #region LogReg */
-
-.log_reg_container{
-    margin-top:157px;
-    width:100%;
-    max-width:1500px;
+.log_reg_container {
+    margin-top: 157px;
+    width: 100%;
+    max-width: 1500px;
     margin: 0 auto;
-    display:flex;
-    justify-content:space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .log_reg_label {
