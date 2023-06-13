@@ -1,4 +1,6 @@
 const form = document.getElementById('uploadForm');
+const notification = document.getElementById('notification');
+
 form.addEventListener('submit', async (event) => {
     event.preventDefault(); 
 
@@ -9,8 +11,12 @@ form.addEventListener('submit', async (event) => {
     });
 
     if (response.ok) {
-        console.log('Файл успешно загружен');
+        notification.textContent = 'Файл успешно загружен';
+        notification.classList.remove('error');
+        notification.classList.add('success');
     } else {
-        console.error('Ошибка при загрузке файла');
+        notification.textContent = 'Не удалось загрузить файл';
+        notification.classList.remove('success');
+        notification.classList.add('error');
     }
 });
