@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* Header */
+/* #region Header */
 
 .header {
     padding-top: 48px;
@@ -153,7 +153,9 @@ h1, h2, h3, h4, h5, h6 {
         background: #B93726;
     }
 
-/* Main */
+/* #endregion Header */
+
+/* #region Main */
 
 .main {
     padding-top: 260px;
@@ -212,10 +214,9 @@ h1, h2, h3, h4, h5, h6 {
     display:grid;
 }
 
+/* #endregion Main */
 
-
-
-/* Profile */
+/* #region Profile */
 
 .profile {
 }
@@ -295,7 +296,10 @@ h1, h2, h3, h4, h5, h6 {
     display:block;
 }
 
-/* LogReg */
+
+/* #endregion Profile */
+
+/* #region LogReg */
 
 .log_reg_container{
     margin-top:157px;
@@ -397,3 +401,5 @@ h1, h2, h3, h4, h5, h6 {
         color: #DB5141;
         background: #111211;
     }
+
+/* #endregion LogReg */
