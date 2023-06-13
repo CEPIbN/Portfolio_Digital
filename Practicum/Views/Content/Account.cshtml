@@ -137,11 +137,18 @@
 			<div class="profile_main_information">
 				<a class="profile_main_projectadd_button" asp-controller="Content" asp-action="Upload">Add new</a>
 				<a class="profile_main_edit_button" asp-controller="Content" asp-action="Information">Edit</a>
+				<div id="user-info">
+					<h2>Информация о пользователе</h2>
+					<div id="avatar"></div>
+					<p id="name"></p>
+					<p id="last-name"></p>
+					<p id="phone-number"></p>
+					<p id="age"></p>
+					<p id="email"></p>
+				</div>
 			</div>
 			<div class="profile_projects_grid" id="projects">
-				<ul class="projects_list" id="projects-list">
-                    <li class="project" id="project"></li>
-				</ul>
+				<ul class="projects_list" id="projects-list"></ul>
 			</div>
 		</div>
 	</div>
