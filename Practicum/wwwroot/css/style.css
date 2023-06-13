@@ -349,7 +349,6 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: space-between;
     margin-left: 64px;
     margin-right: 64px;
-    margin-bottom:64px;
 }
 
 .form_string {
@@ -375,4 +374,26 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
     outline: none;
     font-size: 26px;
+    padding: 0px 5px;
 }
+
+.form_button:hover {
+    color: #DB5141;
+    background: #111211;
+}
+
+.log_reg_button {
+    display:inline-block;
+    text-decoration: none;
+    color: #111211;
+    background: #DB5141;
+    padding:0px 5px;
+    margin-left:64px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+    .log_reg_button:hover {
+        color: #DB5141;
+        background: #111211;
+    }
