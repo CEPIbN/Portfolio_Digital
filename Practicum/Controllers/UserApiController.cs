@@ -42,7 +42,6 @@ namespace MVP.Controllers
             {
                 //UserInfoModel? userData = await Request.ReadFromJsonAsync<UserInfoModel>();
                 var user = await GetAuthUser();
-                Console.WriteLine("обновление данных пользователя");
                 /*byte[] imageData;
                 if (userData.Avatar != null)
                 {
