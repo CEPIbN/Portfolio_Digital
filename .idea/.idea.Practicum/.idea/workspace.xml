@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="923a8739-790f-4b22-a208-ce38dfb6a4eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Practicum/wwwroot/js/infoAndProject.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Practicum/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Practicum/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Practicum/Views/Content/Account.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Practicum/Views/Content/Account.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Practicum/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Practicum/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Practicum/wwwroot/js/allProjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/Practicum/wwwroot/js/allProjects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Practicum/wwwroot/js/infoAndProject.js" beforeDir="false" afterPath="$PROJECT_DIR$/Practicum/wwwroot/js/infoAndProject.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684318292817</updated>
       <workItem from="1684318303737" duration="557000" />
-      <workItem from="1686728982317" duration="966000" />
+      <workItem from="1686728982317" duration="1994000" />
     </task>
     <servers />
   </component>
