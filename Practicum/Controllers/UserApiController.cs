@@ -19,7 +19,13 @@ namespace MVP.Controllers
             db = context;
         }
         [HttpGet]
-        public IActionResult GetProjects([FromQuery] string searchInput)
+        public IActionResult GetProjectsWithQuery()
+        {
+            var projects = db.Projects.ToList();
+            return Ok(projects);
+        }
+        [HttpGet]
+        public IActionResult GetProjectsWithQuery([FromQuery] string searchInput)
         {
             if (string.IsNullOrWhiteSpace(searchInput))
             {
