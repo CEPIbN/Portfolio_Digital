@@ -13,6 +13,6 @@
 
             listItem.append(fileNameElement, descriptionElement);
             projectsList.append(listItem);
-        }
+}
     });
 });

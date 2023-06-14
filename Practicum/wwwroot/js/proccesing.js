@@ -19,7 +19,7 @@ response.forEach(function (project) {
         addProjectContainer.appendChild(addButton);
     } else {
         var projectLink = document.createElement('a');
-        projectLink.classList.add('add_project');
+        projectLink.classList.add('add_project');   
         projectLink.href = '/';
         addProjectContainer.appendChild(projectLink);
     }
