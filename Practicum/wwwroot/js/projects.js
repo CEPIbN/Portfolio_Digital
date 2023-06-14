@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $.get('/api/UserApi/GetProjectsWithQuery', function(data) {
+﻿$(document).ready(function () {
+    $.get('/api/UserApi/GetProjects', function (data) {
         var projectsList = $('#projects-list');
 
         for (var i = 0; i < data.length; i++) {

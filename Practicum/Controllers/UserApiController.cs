@@ -50,6 +50,13 @@ namespace MVP.Controllers
             }
             else
             {
+                user.Projects = db.Projects
+                    .Where(item => item.UserId == user.Id)
+                    .Select(item=> new FileData{Id = item.Id,
+                        FileName = item.FileName,
+                        Description = item.Description,
+                        Data = item.Data })
+                    .ToList();
                 //await Response.WriteAsJsonAsync(user);
                 return Ok(user);
             }
