@@ -19,6 +19,20 @@ namespace MVP.Controllers
             db = context;
         }
         [HttpGet]
+        public IActionResult GetProjects([FromQuery] string searchInput)
+        {
+            if (string.IsNullOrWhiteSpace(searchInput))
+            {
+                var projects = db.Projects.ToList();
+                return Ok(projects);
+            }
+            else
+            {
+                var projects = db.Projects.Where(item => item.User.Name == searchInput || item.User.LastName == searchInput).ToList();
+                return Ok(projects);
+            }
+        }
+        [HttpGet]
         public async Task<IActionResult> GetData()
         {
             var user = await GetAuthUser();
