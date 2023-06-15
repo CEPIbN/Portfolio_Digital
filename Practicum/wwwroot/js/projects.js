@@ -1,6 +1,32 @@
-﻿namespace MVP.wwwroot.js
-{
-    public class projects
-    {
-    }
-}
+﻿window.addEventListener('DOMContentLoaded', (event) => {
+    fetch('/api/UserApi/GetProjects')
+        .then(response => response.json())
+        .then(data => {
+            var projects = data;
+            var projectsList = document.getElementById('projects-list');
+
+            projects.forEach(project => {
+                var fileName = project.fileName;
+                var description = project.Description;
+                var fileData = project.Data;
+
+                var listItem = document.createElement('li');
+                var fileNameElement = document.createElement('h3');
+                fileNameElement.textContent = fileName;
+                var descriptionElement = document.createElement('p');
+                descriptionElement.textContent = description;
+                var downloadLink = document.createElement('a');
+                downloadLink.textContent = 'Скачать';
+                downloadLink.href = 'data:application/octet-stream;base64,' + btoa(fileData);
+                downloadLink.download = fileName;
+
+                listItem.appendChild(fileNameElement);
+                listItem.appendChild(descriptionElement);
+                listItem.appendChild(downloadLink);
+                projectsList.appendChild(listItem);
+            });
+        })
+        .catch(error => {
+            console.error('Ошибка при получении списка проектов:', error);
+        });
+});
