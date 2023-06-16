@@ -33,11 +33,25 @@ async function getData() {
                     fileNameElement.textContent = viewName;
                     var descriptionElement = document.createElement('p');
                     descriptionElement.textContent = description;
+                    var imageElement = document.createElement("img");
+                    imageElement.src = "../../images/normal.png";
 
                     listItem.appendChild(fileNameElement);
                     listItem.appendChild(descriptionElement);
                     listItem.appendChild(link);
                     projectsList.appendChild(listItem);
+
+                    if (contentType.includes("image")) {
+                        imageElement.src = "../../images/image.png";
+                    } else if (contentType.includes("pdf") || contentType.includes("doc")) {
+                        imageElement.src = "../../images/document.png";
+                    } else if (contentType.includes("xls") || contentType.includes("csv")) {
+                        imageElement.src = "../../images/excel.png";
+                    } else if (contentType.includes("ppt")) {
+                        imageElement.src = "../../images/powerpoint.png";
+                    } else if (contentType.includes("text")) {
+                        imageElement.src = "../../images/text.png";
+                    }
                 });
 
                 console.log("данные вернулись");
