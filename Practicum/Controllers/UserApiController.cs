@@ -105,6 +105,7 @@ namespace MVP.Controllers
                     {
                         Description = model.Description,
                         FileName = file.FileName,
+                        ViewName = model.FileName,
                         ContentType = file.ContentType,
                         Data = memoryStream.ToArray(),
                         //UserId = user.Id,
