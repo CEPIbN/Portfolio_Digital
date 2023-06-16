@@ -14,8 +14,7 @@
     <div class="container">
         <div class="header_inner">
             <div class="header_logo">There`s What I can</div>
-
-            <div class="header_nav">
+	        <div>
                 <nav class="header_nav_top">
                     <div class="profile_header_nav_top_rectangle">From those we deserve</div>
                     <a class="header_logout_button" asp-controller="Content" asp-action="Logout">LogOut</a>
@@ -33,15 +32,17 @@
     <div class="container">
         <div class="profile_main_inner">
             <div class="profile_main_information">
-                <a class="profile_main_projectadd_button" asp-controller="Content" asp-action="Upload">Add new</a>
-                <a class="profile_main_edit_button" asp-controller="Content" asp-action="Information">Edit</a>
-                <div id="user-info">
-                    <h2>Информация о пользователе</h2>
-                    <p id="name"></p>
-                    <p id="last-name"></p>
-                    <p id="phone-number"></p>
-                    <p id="email"></p>
-                </div>
+	            <div id="user-info">
+		            <h2>User information</h2>
+		            <p id="name"></p>
+		            <p id="last-name"></p>
+		            <p id="phone-number"></p>
+		            <p id="email"></p>
+	            </div>
+	            <div class="profile_buttons">
+		            <a class="profile_main_projectadd_button" asp-controller="Content" asp-action="Upload">Add new</a>
+		            <a class="profile_main_edit_button" asp-controller="Content" asp-action="Information">Edit</a>
+	            </div>
             </div>
             <div id="projects">
 	            <ul class="projects_list" id="projects-list">
