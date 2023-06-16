@@ -486,8 +486,9 @@ file_uploader { }
 .prjects_list_main {
     display: grid;
     grid-template-columns: repeat(3, 507px);
-    grid-gap: 40px;
-    margin-left: 0;
+    grid-gap: 27px;
+    margin-left: -31px;
+    margin-top: 70px;
 }
 
 .prjects_list_main li {
