@@ -1,5 +1,4 @@
 ﻿getData();
-
 async function getData() {
     fetch("/api/UserApi/GetData")
         .then(response => response.json())
@@ -36,13 +35,14 @@ async function getData() {
                     var imageElement = document.createElement("img");
                     imageElement.src = "../../images/normal.png";
 
+                    listItem.appendChild(imageElement);
                     listItem.appendChild(fileNameElement);
                     listItem.appendChild(descriptionElement);
                     listItem.appendChild(link);
                     projectsList.appendChild(listItem);
 
                     if (contentType.includes("image")) {
-                        imageElement.src = "../../images/image.png";
+                        imageElement.src = "../../images/standart.png";
                     } else if (contentType.includes("pdf") || contentType.includes("doc")) {
                         imageElement.src = "../../images/document.png";
                     } else if (contentType.includes("xls") || contentType.includes("csv")) {
@@ -62,23 +62,4 @@ async function getData() {
         .catch(error => {
             console.error("Ошибка при получении данных:", error);
         });
-}
-
-
-/*
-    function getImagePath(contentType) {
-    if (contentType.includes("image")) {
-        return "~/images/standart.png";
-    } else if (contentType.includes("pdf") || contentType.includes("doc")) {
-        return "~/images/document.png";
-    } else if (contentType.includes("xls") || contentType.includes("csv")) {
-        return "~/images/excel.png";
-    } else if (contentType.includes("ppt")) {
-        return "~/images/powerpoint.png";
-    } else if (contentType.includes("text")) {
-        return "~/images/text.png";
-    } else {
-        return "~/images/normal.png";
-    }
-}
- */
+};
