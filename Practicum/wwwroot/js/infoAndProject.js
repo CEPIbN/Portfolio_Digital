@@ -1,4 +1,5 @@
 ﻿getData();
+
 async function getData() {
     fetch("/api/UserApi/GetData")
         .then(response => response.json())
@@ -32,26 +33,11 @@ async function getData() {
                     fileNameElement.textContent = viewName;
                     var descriptionElement = document.createElement('p');
                     descriptionElement.textContent = description;
-                    var imageElement = document.createElement("img");
-                    imageElement.src = "images/normal.png"; 
 
-                    listItem.appendChild(imageElement);
                     listItem.appendChild(fileNameElement);
                     listItem.appendChild(descriptionElement);
                     listItem.appendChild(link);
                     projectsList.appendChild(listItem);
-
-                    if (contentType.includes("image")) {
-                        imageElement.src = "images/image.png";
-                    } else if (contentType.includes("pdf") || contentType.includes("doc")) {
-                        imageElement.src = "images/document.png";
-                    } else if (contentType.includes("xls") || contentType.includes("csv")) {
-                        imageElement.src = "images/excel.png";
-                    } else if (contentType.includes("ppt")) {
-                        imageElement.src = "images/powerpoint.png";
-                    } else if (contentType.includes("text")) {
-                        imageElement.src = "images/text.png";
-                    }
                 });
 
                 console.log("данные вернулись");
@@ -62,4 +48,23 @@ async function getData() {
         .catch(error => {
             console.error("Ошибка при получении данных:", error);
         });
-};
+}
+
+
+/*
+    function getImagePath(contentType) {
+    if (contentType.includes("image")) {
+        return "~/images/standart.png";
+    } else if (contentType.includes("pdf") || contentType.includes("doc")) {
+        return "~/images/document.png";
+    } else if (contentType.includes("xls") || contentType.includes("csv")) {
+        return "~/images/excel.png";
+    } else if (contentType.includes("ppt")) {
+        return "~/images/powerpoint.png";
+    } else if (contentType.includes("text")) {
+        return "~/images/text.png";
+    } else {
+        return "~/images/normal.png";
+    }
+}
+ */
