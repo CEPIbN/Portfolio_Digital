@@ -3,6 +3,7 @@ using Azure.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using MVP.Models;
 using MVP.ViewModels;
 using System;
@@ -45,19 +46,12 @@ namespace MVP.Controllers
             if (user == null) 
             {
                 Response.StatusCode = 404;
-                //await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
                 return BadRequest(new { message = "Пользователь не найден" });
             }
             else
             {
-                user.Projects = db.Projects
-                    .Where(item => item.UserId == user.Id)
-                    .Select(item=> new FileData{Id = item.Id,
-                        FileName = item.FileName,
-                        Description = item.Description,
-                        Data = item.Data })
-                    .ToList();
-                //await Response.WriteAsJsonAsync(user);
+                var projects = db.Projects.ToList();
+                var users = db.Users.ToList();
                 return Ok(user);
             }
         }
@@ -67,41 +61,37 @@ namespace MVP.Controllers
         {
             try
             {
-                //UserInfoModel? userData = await Request.ReadFromJsonAsync<UserInfoModel>();
                 var user = await GetAuthUser();
-                /*byte[] imageData;
-                if (userData.Avatar != null)
-                {
-                    using (var memoryStream = new MemoryStream())
-                    {
-                        await userData.Avatar.CopyToAsync(memoryStream);
-                        imageData = memoryStream.ToArray();
-                        user.Avatar = imageData;
-                    }
-                }
-                else
-                    user.Avatar = new byte[0];*/
-                user.Age = userData.Age;
                 user.Name = userData.Name ?? "";
                 user.LastName = userData.LastName ?? "";
                 user.PhoneNumber = userData.PhoneNumber ?? "";
                 db.Users.Update(user);
                 await db.SaveChangesAsync();
-                //await Response.WriteAsJsonAsync(user);
-                return Ok(user);
+                return Ok(new InfoData(user));
             }
             catch
             {
                 Response.StatusCode = 404;
-                //await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
                 return BadRequest(new { message = "Пользователь не найден" });
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetInfoData()
+        {
+            var user = await GetAuthUser();
+            if (user == null)
+            {
+                Response.StatusCode = 404;
+                return BadRequest(new { message = "Пользователь не найден" });
+            }
+            else
+            {
+                return Ok(new InfoData(user));
             }
         }
         [HttpPost]
         public async Task<IActionResult> UploadFile([FromForm] UploadFileViewModel model)
         {
-
-            //IFormFile file = model.FileData;
             try
             {
                 var user = await GetAuthUser();
@@ -113,16 +103,14 @@ namespace MVP.Controllers
                     var fileData = new FileData
                     {
                         Description = model.Description,
-                        FileName = model.FileName,
+                        FileName = file.FileName,
                         ContentType = file.ContentType,
                         Data = memoryStream.ToArray(),
-                        UserId = user.Id,
-                        User = user
+                        //UserId = user.Id,
+                        //User = user
                     };
-
                     // Сохраните файл в базе данных
                     user.Projects.Add(fileData);
-
                 }
                 await db.SaveChangesAsync();
 
@@ -131,7 +119,6 @@ namespace MVP.Controllers
             catch
             {
                 Response.StatusCode = 404;
-                //await Response.WriteAsJsonAsync(new { message = "Пользователь не найден" });
                 return BadRequest(new { message = "Пользователь не найден" });
             }
         }

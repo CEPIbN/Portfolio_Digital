@@ -14,8 +14,9 @@ form.addEventListener('submit', async (event) => {
         notification.textContent = 'Файл успешно загружен';
         notification.classList.remove("error");
         notification.classList.add("success");
-        console.log("Данные успешно отправлены!", data);
+        console.log("Данные успешно отправлены!");
     } else {
+        error = response.json();
         notification.textContent = 'Не удалось загрузить файл';
         notification.classList.remove("success");
         notification.classList.add("error");

@@ -7,13 +7,11 @@ infoForm.addEventListener("submit", function (event) {
     const name = document.getElementById("name").value;
     const lastName = document.getElementById("lastName").value;
     const phoneNumber = document.getElementById("phoneNumber").value;
-    const age = document.getElementById("age").value;
 
     const formData = {
-        name: name,
-        lastName: lastName,
-        phoneNumber: phoneNumber,
-        age: age
+        Name: name,
+        LastName: lastName,
+        PhoneNumber: phoneNumber,
     };
 
     const requestOptions = {
@@ -42,13 +40,12 @@ infoForm.addEventListener("submit", function (event) {
 
 getData();
 async function getData() {
-    fetch("/api/UserApi/GetData")
+    fetch("/api/UserApi/GetInfoData")
         .then(response => response.json())
         .then(data => {
             document.getElementById("name").value = data.name;
             document.getElementById("lastName").value = data.lastName;
             document.getElementById("phoneNumber").value = data.phoneNumber;
-            document.getElementById("age").value = data.age;
         })
         .catch(error => {
             console.error("Ошибка при получении данных:", error);

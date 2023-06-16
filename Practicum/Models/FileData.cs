@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace MVP.Models
 {
@@ -11,6 +12,7 @@ namespace MVP.Models
         public byte[]? Data { get; set; }
         [ForeignKey("User")]
         public int? UserId { get; set; }
+        [JsonIgnore]
         public User? User { get; set; }
     }
 
