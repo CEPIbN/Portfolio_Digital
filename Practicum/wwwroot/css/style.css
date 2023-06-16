@@ -478,7 +478,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .prjects_list_main {
-
+    display: grid;
+    grid-template-columns: repeat(3, 507px);
+    grid-gap: 40px;
+    margin-left: 0;
 }
+
+    .prjects_list_main li {
+        width: 507px;
+        height: 441px;
+        background: #111211;
+    }
 
 /* #endregion Projects */
