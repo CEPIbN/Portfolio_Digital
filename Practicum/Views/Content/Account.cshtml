@@ -1,56 +1,56 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    Layout = "_Layout";
+	Layout = "_Layout";
 }
 
 <head>
-    <meta charset="utf-8">
-    <title>profile</title>
-    <link rel="stylesheet" href="~/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+	<meta charset="utf-8">
+	<title>profile</title>
+	<link rel="stylesheet" href="~/css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Montserrat:wght@800&display=swap" rel="stylesheet">
 </head>
 <body>
 <header class="header">
-    <div class="container">
-        <div class="header_inner">
-            <div class="header_logo">There`s What I can</div>
-	        <div>
-                <nav class="header_nav_top">
-                    <div class="profile_header_nav_top_rectangle">From those we deserve</div>
-                    <a class="header_logout_button" asp-controller="Content" asp-action="Logout">LogOut</a>
-                </nav>
-                <nav class="header_nav_bottom">
-                    <a class="header_home_button" asp-controller="Home" asp-action="Index">Home</a>
-                    <a class="header_popular_button" href="#">Popular</a>
-                    <div class="header_nav_bottom_rectangle"></div>
-                </nav>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="header_inner">
+			<div class="header_logo">There`s What I can</div>
+			<div>
+				<nav class="header_nav_top">
+					<div class="profile_header_nav_top_rectangle">From those we deserve</div>
+					<a class="header_logout_button" asp-controller="Content" asp-action="Logout">LogOut</a>
+				</nav>
+				<nav class="header_nav_bottom">
+					<a class="header_home_button" asp-controller="Home" asp-action="Index">Home</a>
+					<a class="header_popular_button" href="#">Popular</a>
+					<div class="header_nav_bottom_rectangle"></div>
+				</nav>
+			</div>
+		</div>
+	</div>
 </header>
 <main class="main">
-    <div class="container">
-        <div class="profile_main_inner">
-            <div class="profile_main_information">
-	            <div id="user-info">
-		            <h2>User information</h2>
-		            <p id="name"></p>
-		            <p id="last-name"></p>
-		            <p id="phone-number"></p>
-		            <p id="email"></p>
-	            </div>
-	            <div class="profile_buttons">
-		            <a class="profile_main_projectadd_button" asp-controller="Content" asp-action="Upload">Add new</a>
-		            <a class="profile_main_edit_button" asp-controller="Content" asp-action="Information">Edit</a>
-	            </div>
-            </div>
-            <div id="projects">
-	            <ul class="projects_list" id="projects-list">
-		            <!-- Здесь будут отображаться проекты -->
-                </ul>
-            </div>
-        </div>
-    </div>
-    <script src="~/js/infoAndProject.js"></script>
+	<div class="container">
+		<div class="profile_main_inner">
+			<div class="profile_main_information">
+				<div class="user_info" id="user-info">
+					<h2>User information</h2>
+					<p id="name"></p>
+					<p id="last-name"></p>
+					<p id="phone-number"></p>
+					<p id="email"></p>
+				</div>
+
+				<a class="profile_main_projectadd_button" asp-controller="Content" asp-action="Upload">Add new proj</a>
+				<a class="profile_main_edit_button" asp-controller="Content" asp-action="Information">Edit</a>
+
+			</div>
+			<div id="projects">
+				<ul class="projects_list" id="projects-list">
+					<!-- Здесь будут отображаться проекты -->
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script src="~/js/infoAndProject.js"></script>
 </main>
 </body>
