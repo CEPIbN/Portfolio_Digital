@@ -418,14 +418,14 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
 
 .information_edit {
     display: block;
-    width: 507px;
+    width: 707px;
     background: #1f4d40;
 }
 
 .information_edit input {
     border: none;
     outline: none;
-    width: 457px;
+    width: 657px;
     color: #111211;
     font-family: 'Didact Gothic';
     font-style: normal;
@@ -435,23 +435,14 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
     margin-left: 23px;
     margin-top: 26px;
     margin-bottom: 23px;
-    padding-left: 15px;
-    padding-top: 3px;
-}
-
-.information_edit input[type=file] {
-
-}
-
-.information_edit input[type=file] button {
-    width: 10px;
+    padding: 3px 15px;
 }
 
     .information_edit button {
         border: none;
         outline: none;
         color: #111211;
-        margin-left: 23px;
+        margin-left: 556px;
         margin-top: 20px;
         margin-bottom: 23px;
         background: #b93726;
@@ -466,8 +457,6 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
     font-weight: 400;
     font-size: 30px;
 }
-
-file_uploader { }
 /* #endregion Editor */
 /* #region Projects */
 .projects_list {
