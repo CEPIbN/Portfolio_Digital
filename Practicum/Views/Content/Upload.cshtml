@@ -32,9 +32,12 @@
 <main class="main">
 	<div class="container">
 		<form class="information_edit" id="uploadForm" method="post">
-			<input type="text" id="description" name="description" placeholder="Descriptoin">
 			<input type="text" id="fileName" name="fileName" placeholder="File name" required>
-			<input type="file" id="fileData" name="fileData" placeholder="File" required>
+
+			<input type="text" id="description" name="description" placeholder="Descriptoin">
+
+			<input class="file_uploader" style="display: none;" type="file" id="fileData" name="fileData" placeholder="File" required>
+
 			<button type="submit">submit</button>
 		</form>
 		<p class="notification" id="notification"></p>
