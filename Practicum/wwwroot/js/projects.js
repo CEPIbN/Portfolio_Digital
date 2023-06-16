@@ -8,12 +8,13 @@ async function getData() {
 
             projects.forEach(project => {
                 var fileName = project.fileName;
+                var viewName = project.viewName;
                 var description = project.description;
                 var fileData = project.data;
 
                 var listItem = document.createElement('li');
                 var fileNameElement = document.createElement('h3');
-                fileNameElement.textContent = fileName;
+                fileNameElement.textContent = viewName;
                 var descriptionElement = document.createElement('p');
                 descriptionElement.textContent = description;
                 var downloadLink = document.createElement('a');
