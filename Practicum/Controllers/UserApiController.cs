@@ -20,22 +20,23 @@ namespace MVP.Controllers
             db = context;
         }
         [HttpGet]
-        public IActionResult GetProjectsWithQuery()
+        public IActionResult GetProjects()
         {
             var projects = db.Projects.ToList();
             return Ok(projects);
         }
         [HttpGet]
-        public IActionResult GetProjectsWithQuery([FromQuery] string searchInput)
+        public IActionResult GetProjectsWithQuery([FromQuery] string? searchInput)
         {
             if (string.IsNullOrWhiteSpace(searchInput))
             {
+                var users = db.Users.ToList();
                 var projects = db.Projects.ToList();
                 return Ok(projects);
             }
             else
             {
-                var projects = db.Projects.Where(item => item.User.Name == searchInput || item.User.LastName == searchInput).ToList();
+                var projects = db.Projects.ToList();
                 return Ok(projects);
             }
         }
@@ -50,9 +51,9 @@ namespace MVP.Controllers
             }
             else
             {
-                var projects = db.Projects.ToList();
+                var projects = db.Projects.Where(item => item.UserId == user.Id).Select(fileData => new MyProject(fileData)).ToList();
                 var users = db.Users.ToList();
-                return Ok(user);
+                return Ok(new { user, projects });
             }
         }
 

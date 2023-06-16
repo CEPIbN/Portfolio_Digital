@@ -1,26 +1,48 @@
-﻿$(document).ready(function() {
-    $.get('/api/UserApi/GetData', function(data) {
-        var user = data.User;
-        $('#name').text(user.Name);
-        $('#last-name').text(user.LastName);
-        $('#phone-number').text(user.PhoneNumber);
-        $('#age').text(user.Age);
-        $('#email').text(user.Email);
+﻿getData();
+async function getData() {
+    fetch("/api/UserApi/GetData")
+        .then(response => response.json())
+        .then(data => {
+            var user = data.user;
+            var projects = data.projects;
+            document.getElementById("name").textContent = user.name;
+            document.getElementById("last-name").textContent = user.lastName;
+            document.getElementById("phone-number").textContent = user.phoneNumber;
+            document.getElementById("email").textContent = user.email;
+            console.log("данные вернулись")
+            var projectsList = document.getElementById("projects-list");
+            if (projects != null) {
+                projects.forEach(project => {
+                    var fileName = project.fileName;
+                    var description = project.description;
+                    var fileData = project.data;
+                    var contentType = project.contentType;
 
-        var projects = data.FileData;
-        var projectsList = $('#projects-list');
+                    const blob = new Blob([fileData], {type: contentType});
+                    const fileUrl = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = fileUrl;
+                    link.download = fileName; // Укажите имя файла
+                    link.innerText = 'Скачать файл';
+                    var listItem = document.createElement('li');
+                    var fileNameElement = document.createElement('h3');
+                    fileNameElement.textContent = fileName;
+                    var descriptionElement = document.createElement('p');
+                    descriptionElement.textContent = description;
 
-        for (var i = 0; i < projects.length; i++) {
-            var project = projects[i];
-            var fileName = project.fileName;
-            var description = project.Description;
-
-            var listItem = $('<li>');
-            var fileNameElement = $('<h3>').text(fileName);
-            var descriptionElement = $('<p>').text(description);
-
-            listItem.append(fileNameElement, descriptionElement);
-            projectsList.append(listItem);
-        }
-    });
-});
+                    listItem.appendChild(fileNameElement);
+                    listItem.appendChild(descriptionElement);
+                    listItem.appendChild(link);
+                    projectsList.appendChild(listItem);
+                })
+                console.log("данные вернулись")
+            }
+            else {
+                console.log("добавьте проекты, чтобы увидеть в каталоге")
+            }
+            //console.log("данные вернулись")
+        })
+        .catch(error => {
+            console.error("Ошибка при получении данных:", error);
+        });
+};

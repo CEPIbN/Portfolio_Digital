@@ -12,7 +12,7 @@ namespace MVP.Models
         public byte[]? Data { get; set; }
         [ForeignKey("User")]
         public int? UserId { get; set; }
-        [JsonIgnore]
+        
         public User? User { get; set; }
     }
 
