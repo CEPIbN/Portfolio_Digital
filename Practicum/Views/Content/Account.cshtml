@@ -3,108 +3,6 @@
     Layout = "_Layout";
 }
 
-@*
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/normalize.css">
-    <link rel="stylesheet" href="~/css/progile.css">
-    <title>Profile</title>
-</head>
-<body>
-    <header class="header">
-        <div class="logo">
-            <a href="/">Название проекта</a>
-        </div>
-        <div class="navigation">
-            <a class="navigation_item" href="/">рубрика</a>
-            <a class="navigation_item" href="/">рубрика</a>
-            <a class="navigation_item" href="/">рубрика</a>
-            <a class="navigation_item" href="/">рубрика</a>
-            <a class="navigation_item" href="/">рубрика</a>
-            <a class="navigation_item" href="/">рубрика</a>
-        </div>
-    </header>
-
-    <main>
-        <div class="division">
-        </div>
-        <div class="main_info">
-            <div class="profile_info">
-                <img class="user_img" src="~/images/user_img.png">
-                <p class="user_name">Никнейм Никнеймович</p>
-                <a class="edit_button" asp-controller="Content" asp-action="Information">Edit</a>
-                <a class="logout_button" asp-controller="Home" asp-action="Index">Home</a>
-            </div>
-            <div class="project_info">
-                <form>
-                    <input class="search" placeholder="Поиск">
-                    <div class="filters_box">
-                        <select class="filters">
-                            <option disabled selected>Фильтр</option>
-                            <option></option>
-                            <option></option>
-                        </select>
-                        <select class="filters">
-                            <option disabled selected>Фильтр</option>
-                            <option></option>
-                            <option></option>
-                        </select>
-                        <select class="filters">
-                            <option disabled selected>Фильтр</option>
-                            <option></option>
-                            <option></option>
-                        </select>
-                        <select class="filters">
-                            <option disabled selected>Фильтр</option>
-                            <option></option>
-                            <option></option>
-                        </select>
-                        <select class="filters">
-                            <option disabled selected>Фильтр</option>
-                            <option></option>
-                            <option></option>
-                        </select>
-                        <select class="filters">
-                            <option disabled selected>Фильтр</option>
-                            <option></option>
-                            <option></option>
-                        </select>
-                        <select class="filters">
-                            <option disabled selected>Фильтр</option>
-                            <option></option>
-                            <option></option>
-                        </select>
-                    </div>
-                </form>
-                <div class="project_gallery">
-                    <div class="project_cards existed">
-                        <img src="~/images/existed.png"> 
-                        <div style="display: none;" class="add_project_container">
-                            <button class="add_project" >Add project</button>
-                        </div>
-                        <p class="project_name">Название проекта</p>
-                    </div>
-                    <div class="project_cards not-existed">
-                        <img src="~/images/existed.png"> 
-                        <div class="add_project_container">
-                            <a class="add_project" href="/"></a>
-                        </div>
-                    </div>                   
-                </div>
-            </div>
-        </div>
-    </main>
-</body>
-</html>
-*@
-
 <head>
     <meta charset="utf-8">
     <title>profile</title>
@@ -146,14 +44,12 @@
                 </div>
             </div>
             <div id="projects">
-                <h2>Список проектов</h2>
-                <ul id="projects-list">
+	            <ul class="projects_list" id="projects-list">
                     <!-- Здесь будут отображаться проекты -->
                 </ul>
             </div>
         </div>
     </div>
     <script src="~/js/infoAndProject.js"></script>
-        @*<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>*@
 </main>
 </body>
