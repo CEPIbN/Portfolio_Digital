@@ -23,12 +23,12 @@ async function getData() {
                 var descriptionElement = document.createElement('p');
                 descriptionElement.textContent = description;
                 var downloadLink = document.createElement('a');
-                downloadLink.textContent = 'Скачать';
+                downloadLink.textContent = 'Download';
                 downloadLink.href = 'data:application/octet-stream;base64,' + btoa(fileData);
                 downloadLink.download = fileName;
                 var linkElement = document.createElement('a');
                 linkElement.href = linkContact;
-                linkElement.textContent = 'Связь';
+                linkElement.textContent = 'Contact';
                 var imageElement = document.createElement("img");
                 if (contentType.includes("image")) {
                     imageElement.src = "../../images/standart.png";

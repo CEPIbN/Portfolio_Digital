@@ -292,14 +292,13 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
     margin-left: 50px;
     margin-top: 50px;
     margin-bottom: 20px;
-    
 }
 
-    .user_info a {
-        outline: none;
-        text-decoration: none;
-        color: #f5f5c8;
-    }
+.user_info a {
+    outline: none;
+    text-decoration: none;
+    color: #f5f5c8;
+}
 
 .profile_main_inner { display: flex; }
 
@@ -438,15 +437,15 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
     padding: 3px 15px;
 }
 
-    .information_edit button {
-        border: none;
-        outline: none;
-        color: #111211;
-        margin-left: 556px;
-        margin-top: 20px;
-        margin-bottom: 23px;
-        background: #b93726;
-    }
+.information_edit button {
+    border: none;
+    outline: none;
+    color: #111211;
+    margin-left: 556px;
+    margin-top: 20px;
+    margin-bottom: 23px;
+    background: #b93726;
+}
 
 .notification {
     margin: 0 23px 23px 23px;
@@ -457,9 +456,13 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
     font-weight: 400;
     font-size: 30px;
 }
+
 /* #endregion Editor */
+
 /* #region Projects */
+
 .projects_list {
+    list-style-type: none;
     display: grid;
     grid-template-columns: repeat(2, 507px);
     grid-gap: 10px;
@@ -472,7 +475,40 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
     background: #111211;
 }
 
+.projects_list li img {
+    width: 507px;
+    height: 300px;
+    margin-bottom: 10px;
+}
+
+.projects_list li h3 {
+    font-family: 'Didact Gothic';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 39px;
+    margin-left: 20px;
+}
+
+.projects_list li p {
+    font-family: 'Didact Gothic';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 29px;
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+
+
+.projects_list li a {
+    text-decoration: none;
+    color: #f5f5c8;
+    margin-left: 20px;
+}
+
 .prjects_list_main {
+    list-style-type: none;
     display: grid;
     grid-template-columns: repeat(3, 507px);
     grid-gap: 27px;
@@ -486,4 +522,34 @@ h1, h2, h3, h4, h5, h6 { margin: 0; }
     background: #111211;
 }
 
+    .prjects_list_main li img {
+        width: 507px;
+        height: 300px;
+        margin-bottom: 10px;
+    }
+    .prjects_list_main li h3 {
+        font-family: 'Didact Gothic';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 39px;
+        margin-left: 20px;
+    }
+
+    .prjects_list_main li p {
+        font-family: 'Didact Gothic';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 29px;
+        margin-left: 20px;
+        margin-bottom: 0;
+    }
+
+    .prjects_list_main li a {
+        text-decoration: none;
+        color: #f5f5c8;
+        margin-left: 20px;
+        margin-right: 150px;
+    }
 /* #endregion Projects */
