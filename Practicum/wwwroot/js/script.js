@@ -6,12 +6,12 @@ infoForm.addEventListener("submit", function (event) {
 
     const name = document.getElementById("name").value;
     const lastName = document.getElementById("lastName").value;
-    const phoneNumber = document.getElementById("phoneNumber").value;
+    const link = document.getElementById("link").value;
 
     const formData = {
         Name: name,
         LastName: lastName,
-        PhoneNumber: phoneNumber,
+        PhoneNumber: link,
     };
 
     const requestOptions = {
@@ -45,7 +45,7 @@ async function getData() {
         .then(data => {
             document.getElementById("name").value = data.name;
             document.getElementById("lastName").value = data.lastName;
-            document.getElementById("phoneNumber").value = data.phoneNumber;
+            document.getElementById("link").value = data.phoneNumber;
         })
         .catch(error => {
             console.error("Ошибка при получении данных:", error);

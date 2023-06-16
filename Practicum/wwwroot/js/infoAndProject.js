@@ -7,8 +7,14 @@ async function getData() {
             var projects = data.projects;
             document.getElementById("name").textContent = user.name;
             document.getElementById("last-name").textContent = user.lastName;
-            document.getElementById("phone-number").textContent = user.phoneNumber;
+            //document.getElementById("phone-number").textContent = user.phoneNumber;
             document.getElementById("email").textContent = user.email;
+            var userInfo = document.getElementById("user-info");
+            var linkContact = document.createElement('a');
+            linkContact.href = user.phoneNumber;
+            linkContact.textContent = 'Связь';
+            userInfo.appendChild(linkContact);
+
             console.log("данные вернулись");
 
             var projectsList = document.getElementById("projects-list");
