@@ -21,7 +21,7 @@ async function getData() {
                     const fileUrl = URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     link.href = fileUrl;
-                    link.download = fileName; // Укажите имя файла
+                    link.download = fileName; 
                     link.innerText = 'Скачать файл';
                     var listItem = document.createElement('li');
                     var fileNameElement = document.createElement('h3').textComtent = fileName;
