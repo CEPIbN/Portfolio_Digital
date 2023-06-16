@@ -18,7 +18,7 @@ async function getData() {
                     var fileData = project.data;
                     var contentType = project.contentType;
 
-                    const blob = new Blob([fileData], {type: contentType});
+                    const blob = new Blob([fileData], { type: contentType });
                     const fileUrl = URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     link.href = fileUrl;

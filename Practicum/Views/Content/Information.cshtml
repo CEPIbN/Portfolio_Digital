@@ -1,22 +1,45 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
-    Layout = "_Layout";
+	Layout = "_Layout";
 }
 
-<form id ="infoForm" method="post">
-    <label for="name">Имя:</label>
-    <input type="text" id="name" name="name">
-
-    <label for="lastName">Второе имя:</label>
-    <input type="text" id="lastName" name="lastName">
-
-    <label for="phoneNumber">Номер телефона:</label>
-    <input type="tel" id="phoneNumber" name="phoneNumber">
-
-    <button type="submit" id="saveBtn">Сохранить</button>
-</form>  
-<div id="notification"></div>
-
-<script src="~/js/script.js"></script>
-
-<a asp-controller="Content" asp-action="Account">acc</a>
+<head>
+	<meta charset="utf-8">
+	<title>Profile</title>
+	<link rel="stylesheet" href="~/css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+	<div class="container">
+		<div class="header_inner">
+			<div class="header_logo">There`s What I can</div>
+			<div>
+				<nav class="header_nav_top">
+					<div class="header_nav_top_rectangle">From those we deserve</div>
+					<a class="header_account_button" asp-controller="Content" asp-action="Account">Account</a>
+					<a class="header_logout_button" asp-controller="Content" asp-action="Logout">LogOut</a>
+				</nav>
+				<nav class="header_nav_bottom">
+					<a class="header_home_button" asp-controller="Home" asp-action="Index">Home</a>
+					<a class="header_popular_button" href="#">Popular</a>
+					<div class="header_nav_bottom_rectangle"></div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
+<main class="main">
+	<div class="container">
+		<form class="information_edit" id="infoForm" method="post">
+			<input type="text" id="name" name="name" placeholder="First name">
+			<input type="text" id="lastName" name="lastName" placeholder="Last name">
+			<input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
+			<input type="number" id="age" name="age" placeholder="Age">
+			<button type="submit" id="saveBtn">Submit</button>
+		</form>
+		<div class="notification" id="notification"></div>
+		<script src="~/js/script.js"></script>
+	</div>
+</main>
+</body>
