@@ -1,31 +1,4 @@
-﻿@*
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    Layout = "_Layout";
-}
-<div>
-    <h1>Загрузка файла</h1>
-    <form id="uploadForm" method="post">
-        <div>
-            <label for="description">Описание:</label>
-            <input type="text" id="description" name="description">
-        </div>
-        <div>
-            <label for="fileName">Имя файла:</label>
-            <input type="text" id="fileName" name="fileName" required>
-        </div>
-        <div>
-            <label for="fileData">Файл:</label>
-            <input type="file" id="fileData" name="fileData" required>
-        </div>
-        <button type="submit">Загрузить файл</button>
-    </form>
-</div>
-<p id="notification"></p>
-
-<script src="~/js/upload.js"></script>*@
-
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
 	Layout = "_Layout";
 }
