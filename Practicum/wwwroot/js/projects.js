@@ -1,6 +1,8 @@
-﻿getData();
-async function getData() {
-    fetch('/api/UserApi/GetProjectsWithQuery')
+﻿const searchInput = document.getElementById('searchInput').value;
+const url = `/api/UserApi/GetProjectsWithQuery?searchInput=${searchInput}`;
+getData(url);
+async function getData(url) {
+    fetch(url)
         .then(response => response.json())
         .then(data => {
             var projects = data;

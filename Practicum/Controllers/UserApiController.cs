@@ -26,9 +26,9 @@ namespace MVP.Controllers
             return Ok(projects);
         }
         [HttpGet]
-        public IActionResult GetProjectsWithQuery([FromQuery] string? searchInput)
+        public IActionResult GetProjectsWithQuery([FromQuery] string searchInput)
         {
-            if (string.IsNullOrWhiteSpace(searchInput))
+            if (searchInput == "" || searchInput == null)
             {
                 var users = db.Users.ToList();
                 var projects = db.Projects.ToList();
@@ -36,7 +36,7 @@ namespace MVP.Controllers
             }
             else
             {
-                var projects = db.Projects.ToList();
+                var projects = db.Projects.Where(item => item.ViewName == searchInput).ToList();
                 return Ok(projects);
             }
         }
