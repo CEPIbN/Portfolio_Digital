@@ -9,8 +9,10 @@ async function getData() {
             document.getElementById("last-name").textContent = user.lastName;
             document.getElementById("phone-number").textContent = user.phoneNumber;
             document.getElementById("email").textContent = user.email;
-            console.log("данные вернулись")
+            console.log("данные вернулись");
+
             var projectsList = document.getElementById("projects-list");
+
             if (projects != null) {
                 projects.forEach(project => {
                     var fileName = project.fileName;
@@ -23,25 +25,39 @@ async function getData() {
                     const fileUrl = URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     link.href = fileUrl;
-                    link.download = fileName; // Укажите имя файла
+                    link.download = fileName;
                     link.innerText = 'Скачать файл';
                     var listItem = document.createElement('li');
                     var fileNameElement = document.createElement('h3');
                     fileNameElement.textContent = viewName;
                     var descriptionElement = document.createElement('p');
                     descriptionElement.textContent = description;
+                    var imageElement = document.createElement("img");
+                    imageElement.src = "images/normal.png"; 
 
+                    listItem.appendChild(imageElement);
                     listItem.appendChild(fileNameElement);
                     listItem.appendChild(descriptionElement);
                     listItem.appendChild(link);
                     projectsList.appendChild(listItem);
-                })
-                console.log("данные вернулись")
+
+                    if (contentType.includes("image")) {
+                        imageElement.src = "images/image.png";
+                    } else if (contentType.includes("pdf") || contentType.includes("doc")) {
+                        imageElement.src = "images/document.png";
+                    } else if (contentType.includes("xls") || contentType.includes("csv")) {
+                        imageElement.src = "images/excel.png";
+                    } else if (contentType.includes("ppt")) {
+                        imageElement.src = "images/powerpoint.png";
+                    } else if (contentType.includes("text")) {
+                        imageElement.src = "images/text.png";
+                    }
+                });
+
+                console.log("данные вернулись");
+            } else {
+                console.log("добавьте проекты, чтобы увидеть в каталоге");
             }
-            else {
-                console.log("добавьте проекты, чтобы увидеть в каталоге")
-            }
-            //console.log("данные вернулись")
         })
         .catch(error => {
             console.error("Ошибка при получении данных:", error);
