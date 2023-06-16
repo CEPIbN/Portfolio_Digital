@@ -26,19 +26,19 @@ namespace MVP.Controllers
             return Ok(projects);
         }
         [HttpGet]
-        public IActionResult GetProjectsWithQuery([FromQuery] string searchInput)
+        public IActionResult GetProjectsWithQuery()
         {
-            if (searchInput == "" || searchInput == null)
-            {
-                var users = db.Users.ToList();
-                var projects = db.Projects.ToList();
-                return Ok(projects);
-            }
-            else
+            //if (searchInput == "" || searchInput == null)
+            //{
+            var users = db.Users.ToList();
+            var projects = db.Projects.ToList();
+            return Ok(projects);
+        //}
+            /*else
             {
                 var projects = db.Projects.Where(item => item.ViewName == searchInput).ToList();
                 return Ok(projects);
-            }
+            }*/
         }
         [HttpGet]
         public async Task<IActionResult> GetData()
