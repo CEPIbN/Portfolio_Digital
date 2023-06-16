@@ -311,6 +311,7 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 /* #endregion Profile */
+
 /* #region LogReg */
 .log_reg_container {
     margin-top: 157px;
@@ -414,3 +415,50 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 /* #endregion LogReg */
+
+/* #region Editor */
+
+.information_edit {
+    display: block;
+    width: 507px;
+    background: #1f4d40;
+}
+
+    .information_edit input {
+        border: none;
+        outline: none;
+        width: 457px;
+        color: #111211;
+        font-family: 'Didact Gothic';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        background: #F5F5C8;
+        margin-left: 23px;
+        margin-top: 26px;
+        margin-bottom: 23px;
+        padding-left: 15px;
+        padding-top: 3px;
+    }
+
+    .information_edit button {
+        border: none;
+        outline: none;
+        color: #111211;
+        margin-left: 23px;
+        margin-top: 20px;
+        margin-bottom: 23px;
+        background: #b93726;
+    }
+
+.notification {
+    margin: 0 23px 23px 23px;
+    color: #111211;
+    margin-bottom: 23px;
+    font-family: 'Didact Gothic';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+/* #endregion Editor */
