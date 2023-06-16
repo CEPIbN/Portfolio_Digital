@@ -2,7 +2,7 @@
 //const url = `/api/UserApi/GetProjectsWithQuery?searchInput=${searchInput}`;
 getData();
 async function getData() {
-    fetch(`/api/UserApi/GetProjectsWithQuery`)
+    fetch("/api/UserApi/GetProjectsWithQuery")
         .then(response => response.json())
         .then(data => {
             var projects = data;
@@ -13,6 +13,7 @@ async function getData() {
                 var viewName = project.viewName;
                 var description = project.description;
                 var fileData = project.data;
+                var contentType = project.contentType;
                 var user = project.user;
                 var linkContact = user.phoneNumber;
 
@@ -28,12 +29,28 @@ async function getData() {
                 var linkElement = document.createElement('a');
                 linkElement.href = linkContact;
                 linkElement.textContent = 'Связь';
+                var imageElement = document.createElement("img");
+                if (contentType.includes("image")) {
+                    imageElement.src = "../../images/standart.png";
+                } else if (contentType.includes("pdf") || contentType.includes("doc")) {
+                    imageElement.src = "../../images/document.png";
+                } else if (contentType.includes("xls") || contentType.includes("csv")) {
+                    imageElement.src = "../../images/excel.png";
+                } else if (contentType.includes("ppt")) {
+                    imageElement.src = "../../images/powerpoint.png";
+                } else if (contentType.includes("text")) {
+                    imageElement.src = "../../images/text.png";
+                } else {
+                    imageElement.src = "../../images/normal.png";
+                }
 
+                listItem.appendChild(imageElement);
                 listItem.appendChild(fileNameElement);
                 listItem.appendChild(descriptionElement);
                 listItem.appendChild(downloadLink);
                 listItem.appendChild(linkElement);
                 projectsList.appendChild(listItem);
+
             });
         })
         .catch(error => {
