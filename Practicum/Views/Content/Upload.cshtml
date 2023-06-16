@@ -1,4 +1,4 @@
-﻿
+﻿@*
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "_Layout";
@@ -23,5 +23,50 @@
 </div>
 <p id="notification"></p>
 
-<script src="~/js/upload.js"></script>
+<script src="~/js/upload.js"></script>*@
 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	Layout = "_Layout";
+}
+
+<head>
+	<meta charset="utf-8">
+	<title>Profile</title>
+	<link rel="stylesheet" href="~/css/style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+	<div class="container">
+		<div class="header_inner">
+			<div class="header_logo">There`s What I can</div>
+			<div>
+				<nav class="header_nav_top">
+					<div class="header_nav_top_rectangle">From those we deserve</div>
+					<a class="header_account_button" asp-controller="Content" asp-action="Account">Account</a>
+					<a class="header_logout_button" asp-controller="Content" asp-action="Logout">LogOut</a>
+				</nav>
+				<nav class="header_nav_bottom">
+					<a class="header_home_button" asp-controller="Home" asp-action="Index">Home</a>
+					<a class="header_popular_button" href="#">Popular</a>
+					<div class="header_nav_bottom_rectangle"></div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
+<main class="main">
+	<div class="container">
+		<form class="information_edit" id="uploadForm" method="post">
+			<input type="text" id="description" name="description" placeholder="Descriptoin">
+			<input type="text" id="fileName" name="fileName" placeholder="File name" required>
+			<input type="file" id="fileData" name="fileData" placeholder="File" required>
+			<button type="submit">submit</button>
+		</form>
+		<p class="notification" id="notification"></p>
+
+		<script src="~/js/upload.js"></script>
+	</div>
+</main>
+</body>
