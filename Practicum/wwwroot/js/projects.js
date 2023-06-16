@@ -1,18 +1,32 @@
-﻿$(document).ready(function () {
-    $.get('/api/UserApi/GetProjects', function (data) {
-        var projectsList = $('#projects-list');
+﻿window.addEventListener('DOMContentLoaded', (event) => {
+    fetch('/api/UserApi/GetProjects')
+        .then(response => response.json())
+        .then(data => {
+            var projects = data;
+            var projectsList = document.getElementById('projects-list');
 
-        for (var i = 0; i < data.length; i++) {
-            var project = data[i];
-            var fileName = project.fileName;
-            var description = project.Description;
+            projects.forEach(project => {
+                var fileName = project.fileName;
+                var description = project.Description;
+                var fileData = project.Data;
 
-            var listItem = $('<li>');
-            var fileNameElement = $('<h3>').text(fileName);
-            var descriptionElement = $('<p>').text(description);
+                var listItem = document.createElement('li');
+                var fileNameElement = document.createElement('h3');
+                fileNameElement.textContent = fileName;
+                var descriptionElement = document.createElement('p');
+                descriptionElement.textContent = description;
+                var downloadLink = document.createElement('a');
+                downloadLink.textContent = 'Скачать';
+                downloadLink.href = 'data:application/octet-stream;base64,' + btoa(fileData);
+                downloadLink.download = fileName;
 
-            listItem.append(fileNameElement, descriptionElement);
-            projectsList.append(listItem);
-}
-    });
+                listItem.appendChild(fileNameElement);
+                listItem.appendChild(descriptionElement);
+                listItem.appendChild(downloadLink);
+                projectsList.appendChild(listItem);
+            });
+        })
+        .catch(error => {
+            console.error('Ошибка при получении списка проектов:', error);
+        });
 });
